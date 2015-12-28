@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EstrategyGameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plataforma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plataforma_Game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PlataformaID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GameID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Plataforma_Game_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plataforma_Game">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plataforma_Game_Plataforma">
+          <End Role="Plataforma" Type="Self.Plataforma" Multiplicity="1" />
+          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plataforma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plataforma_Game">
+              <PropertyRef Name="PlataformaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EstrategyGameModelStoreContainer">
+          <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plataforma" EntityType="Self.Plataforma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plataforma_Game" EntityType="Self.Plataforma_Game" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Plataforma_Game_Game" Association="Self.FK_Plataforma_Game_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plataforma_Game_Plataforma" Association="Self.FK_Plataforma_Game_Plataforma">
+            <End Role="Plataforma" EntitySet="Plataforma" />
+            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EstrategyGameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Plataforma_Game" Relationship="Self.FK_Plataforma_Game_Game" FromRole="Game" ToRole="Plataforma_Game" />
+        </EntityType>
+        <EntityType Name="Plataforma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Plataforma_Game" Relationship="Self.FK_Plataforma_Game_Plataforma" FromRole="Plataforma" ToRole="Plataforma_Game" />
+        </EntityType>
+        <EntityType Name="Plataforma_Game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="PlataformaID" Type="Guid" Nullable="false" />
+          <Property Name="GameID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_Plataforma_Game_Game" FromRole="Plataforma_Game" ToRole="Game" />
+          <NavigationProperty Name="Plataforma" Relationship="Self.FK_Plataforma_Game_Plataforma" FromRole="Plataforma_Game" ToRole="Plataforma" />
+        </EntityType>
+        <Association Name="FK_Plataforma_Game_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plataforma_Game">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plataforma_Game_Plataforma">
+          <End Role="Plataforma" Type="Self.Plataforma" Multiplicity="1" />
+          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plataforma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plataforma_Game">
+              <PropertyRef Name="PlataformaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Game" EntityType="Self.Game" />
+          <EntitySet Name="Plataforma" EntityType="Self.Plataforma" />
+          <EntitySet Name="Plataforma_Game" EntityType="Self.Plataforma_Game" />
+          <AssociationSet Name="FK_Plataforma_Game_Game" Association="Self.FK_Plataforma_Game_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plataforma_Game_Plataforma" Association="Self.FK_Plataforma_Game_Plataforma">
+            <End Role="Plataforma" EntitySet="Plataforma" />
+            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EstrategyGameModelStoreContainer" CdmEntityContainer="db">
+          <EntitySetMapping Name="Game">
+            <EntityTypeMapping TypeName="EstrategyGameModel.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plataforma">
+            <EntityTypeMapping TypeName="EstrategyGameModel.Plataforma">
+              <MappingFragment StoreEntitySet="Plataforma">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plataforma_Game">
+            <EntityTypeMapping TypeName="EstrategyGameModel.Plataforma_Game">
+              <MappingFragment StoreEntitySet="Plataforma_Game">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="PlataformaID" ColumnName="PlataformaID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
