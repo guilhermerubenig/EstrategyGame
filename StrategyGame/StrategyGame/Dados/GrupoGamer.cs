@@ -12,18 +12,13 @@ namespace StrategyGame.Dados
     using System;
     using System.Collections.Generic;
     
-    public partial class Plataforma
+    public partial class GrupoGamer
     {
-        public Plataforma()
-        {
-            this.PlataformaGame = new HashSet<PlataformaGame>();
-        }
-    
         public int ID { get; set; }
-        public string Nome_PLA { get; set; }
-        public string Fabricante_PLA { get; set; }
-        public Nullable<bool> Ativo_PLA { get; set; }
+        public int GrupoID { get; set; }
+        public int GamerID { get; set; }
     
-        public virtual ICollection<PlataformaGame> PlataformaGame { get; set; }
+        public virtual Gamer Gamer { get; set; }
+        public virtual Grupo Grupo { get; set; }
     }
 }

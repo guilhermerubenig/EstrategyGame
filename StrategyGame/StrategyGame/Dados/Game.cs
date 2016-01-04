@@ -16,12 +16,16 @@ namespace StrategyGame.Dados
     {
         public Game()
         {
-            this.Plataforma_Game = new HashSet<Plataforma_Game>();
+            this.PlataformaGame = new HashSet<PlataformaGame>();
         }
     
-        public System.Guid id { get; set; }
-        public string Nome { get; set; }
+        public int ID { get; set; }
+        public string Nome_GAM { get; set; }
+        public Nullable<System.DateTime> DataCadastro_GAM { get; set; }
+        public Nullable<bool> Ativo_GAM { get; set; }
+        public Nullable<int> Recomenda_GAM { get; set; }
+        public string Imagem_GAM { get; set; }
     
-        public virtual ICollection<Plataforma_Game> Plataforma_Game { get; set; }
+        public virtual ICollection<PlataformaGame> PlataformaGame { get; set; }
     }
 }

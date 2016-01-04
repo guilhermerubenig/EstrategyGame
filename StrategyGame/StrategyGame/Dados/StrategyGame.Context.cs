@@ -13,10 +13,10 @@ namespace StrategyGame.Dados
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db : DbContext
+    public partial class StrategyGameEntities : DbContext
     {
-        public db()
-            : base("name=db")
+        public StrategyGameEntities()
+            : base("name=StrategyGameEntities")
         {
         }
     
@@ -26,7 +26,14 @@ namespace StrategyGame.Dados
         }
     
         public DbSet<Game> Game { get; set; }
+        public DbSet<Gamer> Gamer { get; set; }
+        public DbSet<GamerGame> GamerGame { get; set; }
+        public DbSet<Grupo> Grupo { get; set; }
         public DbSet<Plataforma> Plataforma { get; set; }
-        public DbSet<Plataforma_Game> Plataforma_Game { get; set; }
+        public DbSet<GamerGrupo> GamerGrupo { get; set; }
+        public DbSet<GrupoGamer> GrupoGamer { get; set; }
+        public DbSet<Partidas> Partidas { get; set; }
+        public DbSet<PlataformaGame> PlataformaGame { get; set; }
+        public DbSet<PartidasResultado> PartidasResultado { get; set; }
     }
 }

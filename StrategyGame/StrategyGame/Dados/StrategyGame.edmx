@@ -4,162 +4,714 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EstrategyGameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StrategyGameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Game">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome_GAM" Type="varchar" MaxLength="150" />
+          <Property Name="DataCadastro_GAM" Type="smalldatetime" />
+          <Property Name="Ativo_GAM" Type="bit" />
+          <Property Name="Recomenda_GAM" Type="int" />
+          <Property Name="Imagem_GAM" Type="varchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="Gamer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome_GMR" Type="varchar" MaxLength="100" />
+          <Property Name="Sobrenome_GMR" Type="varchar" MaxLength="100" />
+          <Property Name="Apelido_GMR" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DataCadastro_GMR" Type="smalldatetime" Nullable="false" />
+          <Property Name="DataNascimento_GMR" Type="smalldatetime" />
+          <Property Name="Ativo_GMR" Type="bit" Nullable="false" />
+          <Property Name="Email_GMR" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Nacionalidade" Type="varchar" MaxLength="50" />
+          <Property Name="Sexo_GMR" Type="varchar" MaxLength="20" />
+          <Property Name="Youtube_GMR" Type="varchar" MaxLength="500" />
+          <Property Name="Twitter_GMR" Type="varchar" MaxLength="150" />
+          <Property Name="Twitch_GMR" Type="varchar" MaxLength="150" />
+          <Property Name="Facebook_GMR" Type="varchar" MaxLength="150" />
+          <Property Name="Fone_GMR" Type="varchar" MaxLength="30" />
+          <Property Name="Imagem_GMR" Type="varchar" MaxLength="150" />
+          <Property Name="Senha_GMR" Type="varchar" MaxLength="20" />
+          <Property Name="Positividade" Type="bit" />
+          <Property Name="Negatividade" Type="bit" />
+          <Property Name="Juiz_GMR" Type="bit" />
+        </EntityType>
+        <EntityType Name="GamerGame">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GamerID" Type="int" Nullable="false" />
+          <Property Name="PlataformaGameID" Type="int" Nullable="false" />
+          <Property Name="Data_GAMGMR" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome_GRU" Type="int" Nullable="false" />
+          <Property Name="PlataformaGameID" Type="int" Nullable="false" />
+          <Property Name="Imagem_GRU" Type="varchar" MaxLength="150" />
+          <Property Name="DataCadastro_GRU" Type="smalldatetime" Nullable="false" />
+          <Property Name="Ativo_GRU" Type="bit" Nullable="false" />
+          <Property Name="Descricao_GRU" Type="varchar" MaxLength="500" />
+          <Property Name="Site_GRU" Type="varchar" MaxLength="150" />
+          <Property Name="Facebook_GRU" Type="varchar" MaxLength="150" />
+          <Property Name="Youtube_GRU" Type="varchar" MaxLength="200" />
+          <Property Name="Twitter_GRU" Type="varchar" MaxLength="150" />
+          <Property Name="Twitch_GRU" Type="varchar" MaxLength="150" />
+          <Property Name="Nivel_GRU" Type="varchar" MaxLength="150" />
+          <Property Name="Recomendacoes_GRU" Type="int" />
         </EntityType>
         <EntityType Name="Plataforma">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome_PLA" Type="varchar" MaxLength="150" />
+          <Property Name="Fabricante_PLA" Type="varchar" MaxLength="150" />
+          <Property Name="Ativo_PLA" Type="bit" />
         </EntityType>
-        <EntityType Name="Plataforma_Game">
+        <EntityType Name="GamerGrupo">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PlataformaID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="GameID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Plataforma_Game_Game">
+        <EntityType Name="GrupoGamer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrupoID" Type="int" Nullable="false" />
+          <Property Name="GamerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partidas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrupoID" Type="int" Nullable="false" />
+          <Property Name="Horario" Type="datetime" Nullable="false" />
+          <Property Name="Juiz" Type="bit" Nullable="false" />
+          <Property Name="QuantidadePartidas" Type="int" Nullable="false" />
+          <Property Name="Duracao" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Premiacao" Type="bit" />
+          <Property Name="Pago" Type="bit" />
+        </EntityType>
+        <EntityType Name="PartidasResultado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartidasID" Type="int" Nullable="false" />
+          <Property Name="Gamer" Type="int" Nullable="false" />
+          <Property Name="Pontos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Imagem" Type="varchar" MaxLength="200" />
+          <Property Name="Twitch" Type="varchar" MaxLength="200" />
+          <Property Name="Data" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PlataformaGame">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlataformaID" Type="int" Nullable="false" />
+          <Property Name="GameID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Grupo_PlataformaGame">
+          <End Role="PlataformaGame" Type="Self.PlataformaGame" Multiplicity="1" />
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlataformaGame">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Grupo">
+              <PropertyRef Name="PlataformaGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoGamer_Gamer">
+          <End Role="Gamer" Type="Self.Gamer" Multiplicity="1" />
+          <End Role="GrupoGamer" Type="Self.GrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GrupoGamer">
+              <PropertyRef Name="GamerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoGamer_Grupo">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="GrupoGamer" Type="Self.GrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GrupoGamer">
+              <PropertyRef Name="GrupoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partidas_Grupo">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="Partidas" Type="Self.Partidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Partidas">
+              <PropertyRef Name="GrupoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartidasResultado_Partidas">
+          <End Role="Partidas" Type="Self.Partidas" Multiplicity="1" />
+          <End Role="PartidasResultado" Type="Self.PartidasResultado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PartidasResultado">
+              <PropertyRef Name="PartidasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlataformaGame_tbl_Game">
           <End Role="Game" Type="Self.Game" Multiplicity="1" />
-          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+          <End Role="PlataformaGame" Type="Self.PlataformaGame" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Game">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Plataforma_Game">
+            <Dependent Role="PlataformaGame">
               <PropertyRef Name="GameID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Plataforma_Game_Plataforma">
+        <Association Name="FK_PlataformaGame_tbl_Plataforma">
           <End Role="Plataforma" Type="Self.Plataforma" Multiplicity="1" />
-          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+          <End Role="PlataformaGame" Type="Self.PlataformaGame" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Plataforma">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Plataforma_Game">
+            <Dependent Role="PlataformaGame">
               <PropertyRef Name="PlataformaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EstrategyGameModelStoreContainer">
+        <Association Name="FK_tbl_GamerGame_PlataformaGame">
+          <End Role="PlataformaGame" Type="Self.PlataformaGame" Multiplicity="1" />
+          <End Role="GamerGame" Type="Self.GamerGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlataformaGame">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GamerGame">
+              <PropertyRef Name="PlataformaGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GamerGame_tbl_Gamer1">
+          <End Role="Gamer" Type="Self.Gamer" Multiplicity="1" />
+          <End Role="GamerGame" Type="Self.GamerGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GamerGame">
+              <PropertyRef Name="GamerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StrategyGameModelStoreContainer">
           <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gamer" EntityType="Self.Gamer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GamerGame" EntityType="Self.GamerGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plataforma" EntityType="Self.Plataforma" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Plataforma_Game" EntityType="Self.Plataforma_Game" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Plataforma_Game_Game" Association="Self.FK_Plataforma_Game_Game">
-            <End Role="Game" EntitySet="Game" />
-            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
+          <EntitySet Name="GamerGrupo" EntityType="Self.GamerGrupo" Schema="strategygame" store:Type="Tables" />
+          <EntitySet Name="GrupoGamer" EntityType="Self.GrupoGamer" Schema="strategygame" store:Type="Tables" />
+          <EntitySet Name="Partidas" EntityType="Self.Partidas" Schema="strategygame" store:Type="Tables" />
+          <EntitySet Name="PartidasResultado" EntityType="Self.PartidasResultado" Schema="strategygame" store:Type="Tables" />
+          <EntitySet Name="PlataformaGame" EntityType="Self.PlataformaGame" Schema="strategygame" store:Type="Tables" />
+          <AssociationSet Name="FK_Grupo_PlataformaGame" Association="Self.FK_Grupo_PlataformaGame">
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+            <End Role="Grupo" EntitySet="Grupo" />
           </AssociationSet>
-          <AssociationSet Name="FK_Plataforma_Game_Plataforma" Association="Self.FK_Plataforma_Game_Plataforma">
+          <AssociationSet Name="FK_GrupoGamer_Gamer" Association="Self.FK_GrupoGamer_Gamer">
+            <End Role="Gamer" EntitySet="Gamer" />
+            <End Role="GrupoGamer" EntitySet="GrupoGamer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoGamer_Grupo" Association="Self.FK_GrupoGamer_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="GrupoGamer" EntitySet="GrupoGamer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partidas_Grupo" Association="Self.FK_Partidas_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Partidas" EntitySet="Partidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartidasResultado_Partidas" Association="Self.FK_PartidasResultado_Partidas">
+            <End Role="Partidas" EntitySet="Partidas" />
+            <End Role="PartidasResultado" EntitySet="PartidasResultado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlataformaGame_tbl_Game" Association="Self.FK_PlataformaGame_tbl_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlataformaGame_tbl_Plataforma" Association="Self.FK_PlataformaGame_tbl_Plataforma">
             <End Role="Plataforma" EntitySet="Plataforma" />
-            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GamerGame_PlataformaGame" Association="Self.FK_tbl_GamerGame_PlataformaGame">
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+            <End Role="GamerGame" EntitySet="GamerGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GamerGame_tbl_Gamer1" Association="Self.FK_tbl_GamerGame_tbl_Gamer1">
+            <End Role="Gamer" EntitySet="Gamer" />
+            <End Role="GamerGame" EntitySet="GamerGame" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EstrategyGameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="StrategyGameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StrategyGameEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Game" EntityType="StrategyGameModel.Game" />
+          <EntitySet Name="Gamer" EntityType="StrategyGameModel.Gamer" />
+          <EntitySet Name="GamerGame" EntityType="StrategyGameModel.GamerGame" />
+          <EntitySet Name="Grupo" EntityType="StrategyGameModel.Grupo" />
+          <EntitySet Name="Plataforma" EntityType="StrategyGameModel.Plataforma" />
+          <EntitySet Name="GamerGrupo" EntityType="StrategyGameModel.GamerGrupo" />
+          <EntitySet Name="GrupoGamer" EntityType="StrategyGameModel.GrupoGamer" />
+          <EntitySet Name="Partidas" EntityType="StrategyGameModel.Partidas" />
+          <EntitySet Name="PlataformaGame" EntityType="StrategyGameModel.PlataformaGame" />
+          <AssociationSet Name="FK_PlataformaGame_tbl_Game" Association="StrategyGameModel.FK_PlataformaGame_tbl_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoGamer_Gamer" Association="StrategyGameModel.FK_GrupoGamer_Gamer">
+            <End Role="Gamer" EntitySet="Gamer" />
+            <End Role="GrupoGamer" EntitySet="GrupoGamer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GamerGame_tbl_Gamer1" Association="StrategyGameModel.FK_tbl_GamerGame_tbl_Gamer1">
+            <End Role="Gamer" EntitySet="Gamer" />
+            <End Role="GamerGame" EntitySet="GamerGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_GamerGame_PlataformaGame" Association="StrategyGameModel.FK_tbl_GamerGame_PlataformaGame">
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+            <End Role="GamerGame" EntitySet="GamerGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupo_PlataformaGame" Association="StrategyGameModel.FK_Grupo_PlataformaGame">
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+            <End Role="Grupo" EntitySet="Grupo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoGamer_Grupo" Association="StrategyGameModel.FK_GrupoGamer_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="GrupoGamer" EntitySet="GrupoGamer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partidas_Grupo" Association="StrategyGameModel.FK_Partidas_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Partidas" EntitySet="Partidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlataformaGame_tbl_Plataforma" Association="StrategyGameModel.FK_PlataformaGame_tbl_Plataforma">
+            <End Role="Plataforma" EntitySet="Plataforma" />
+            <End Role="PlataformaGame" EntitySet="PlataformaGame" />
+          </AssociationSet>
+          <EntitySet Name="PartidasResultado" EntityType="StrategyGameModel.PartidasResultado" />
+          <AssociationSet Name="FK_PartidasResultado_Partidas" Association="StrategyGameModel.FK_PartidasResultado_Partidas">
+            <End Role="Partidas" EntitySet="Partidas" />
+            <End Role="PartidasResultado" EntitySet="PartidasResultado" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Game">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Plataforma_Game" Relationship="Self.FK_Plataforma_Game_Game" FromRole="Game" ToRole="Plataforma_Game" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome_GAM" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DataCadastro_GAM" Type="DateTime" Precision="0" />
+          <Property Name="Ativo_GAM" Type="Boolean" />
+          <Property Name="Recomenda_GAM" Type="Int32" />
+          <Property Name="Imagem_GAM" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PlataformaGame" Relationship="StrategyGameModel.FK_PlataformaGame_tbl_Game" FromRole="Game" ToRole="PlataformaGame" />
+        </EntityType>
+        <EntityType Name="Gamer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome_GMR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sobrenome_GMR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apelido_GMR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DataCadastro_GMR" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataNascimento_GMR" Type="DateTime" Precision="0" />
+          <Property Name="Ativo_GMR" Type="Boolean" Nullable="false" />
+          <Property Name="Email_GMR" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nacionalidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo_GMR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Youtube_GMR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Twitter_GMR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Twitch_GMR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Facebook_GMR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fone_GMR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Imagem_GMR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Senha_GMR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Juiz_GMR" Type="Boolean" />
+          <NavigationProperty Name="GrupoGamer" Relationship="StrategyGameModel.FK_GrupoGamer_Gamer" FromRole="Gamer" ToRole="GrupoGamer" />
+          <NavigationProperty Name="GamerGame" Relationship="StrategyGameModel.FK_tbl_GamerGame_tbl_Gamer1" FromRole="Gamer" ToRole="GamerGame" />
+          <Property Name="Positividade" Type="Boolean" />
+          <Property Name="Negatividade" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="GamerGame">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GamerID" Type="Int32" Nullable="false" />
+          <Property Name="PlataformaGameID" Type="Int32" Nullable="false" />
+          <Property Name="Data_GAMGMR" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Gamer" Relationship="StrategyGameModel.FK_tbl_GamerGame_tbl_Gamer1" FromRole="GamerGame" ToRole="Gamer" />
+          <NavigationProperty Name="PlataformaGame" Relationship="StrategyGameModel.FK_tbl_GamerGame_PlataformaGame" FromRole="GamerGame" ToRole="PlataformaGame" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome_GRU" Type="Int32" Nullable="false" />
+          <Property Name="PlataformaGameID" Type="Int32" Nullable="false" />
+          <Property Name="Imagem_GRU" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DataCadastro_GRU" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ativo_GRU" Type="Boolean" Nullable="false" />
+          <Property Name="Descricao_GRU" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Site_GRU" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Facebook_GRU" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Youtube_GRU" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Twitter_GRU" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Twitch_GRU" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel_GRU" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Recomendacoes_GRU" Type="Int32" />
+          <NavigationProperty Name="PlataformaGame" Relationship="StrategyGameModel.FK_Grupo_PlataformaGame" FromRole="Grupo" ToRole="PlataformaGame" />
+          <NavigationProperty Name="GrupoGamer" Relationship="StrategyGameModel.FK_GrupoGamer_Grupo" FromRole="Grupo" ToRole="GrupoGamer" />
+          <NavigationProperty Name="Partidas" Relationship="StrategyGameModel.FK_Partidas_Grupo" FromRole="Grupo" ToRole="Partidas" />
         </EntityType>
         <EntityType Name="Plataforma">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Plataforma_Game" Relationship="Self.FK_Plataforma_Game_Plataforma" FromRole="Plataforma" ToRole="Plataforma_Game" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome_PLA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fabricante_PLA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Ativo_PLA" Type="Boolean" />
+          <NavigationProperty Name="PlataformaGame" Relationship="StrategyGameModel.FK_PlataformaGame_tbl_Plataforma" FromRole="Plataforma" ToRole="PlataformaGame" />
         </EntityType>
-        <EntityType Name="Plataforma_Game">
+        <EntityType Name="GamerGrupo">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="PlataformaID" Type="Guid" Nullable="false" />
-          <Property Name="GameID" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Game" Relationship="Self.FK_Plataforma_Game_Game" FromRole="Plataforma_Game" ToRole="Game" />
-          <NavigationProperty Name="Plataforma" Relationship="Self.FK_Plataforma_Game_Plataforma" FromRole="Plataforma_Game" ToRole="Plataforma" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <Association Name="FK_Plataforma_Game_Game">
-          <End Role="Game" Type="Self.Game" Multiplicity="1" />
-          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+        <EntityType Name="GrupoGamer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrupoID" Type="Int32" Nullable="false" />
+          <Property Name="GamerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gamer" Relationship="StrategyGameModel.FK_GrupoGamer_Gamer" FromRole="GrupoGamer" ToRole="Gamer" />
+          <NavigationProperty Name="Grupo" Relationship="StrategyGameModel.FK_GrupoGamer_Grupo" FromRole="GrupoGamer" ToRole="Grupo" />
+        </EntityType>
+        <EntityType Name="Partidas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrupoID" Type="Int32" Nullable="false" />
+          <Property Name="Horario" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Juiz" Type="Boolean" Nullable="false" />
+          <Property Name="QuantidadePartidas" Type="Int32" Nullable="false" />
+          <Property Name="Duracao" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Grupo" Relationship="StrategyGameModel.FK_Partidas_Grupo" FromRole="Partidas" ToRole="Grupo" />
+          <Property Name="Premiacao" Type="Boolean" />
+          <Property Name="Pago" Type="Boolean" />
+          <NavigationProperty Name="PartidasResultado" Relationship="StrategyGameModel.FK_PartidasResultado_Partidas" FromRole="Partidas" ToRole="PartidasResultado" />
+        </EntityType>
+        <EntityType Name="PlataformaGame">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlataformaID" Type="Int32" Nullable="false" />
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="StrategyGameModel.FK_PlataformaGame_tbl_Game" FromRole="PlataformaGame" ToRole="Game" />
+          <NavigationProperty Name="GamerGame" Relationship="StrategyGameModel.FK_tbl_GamerGame_PlataformaGame" FromRole="PlataformaGame" ToRole="GamerGame" />
+          <NavigationProperty Name="Grupo" Relationship="StrategyGameModel.FK_Grupo_PlataformaGame" FromRole="PlataformaGame" ToRole="Grupo" />
+          <NavigationProperty Name="Plataforma" Relationship="StrategyGameModel.FK_PlataformaGame_tbl_Plataforma" FromRole="PlataformaGame" ToRole="Plataforma" />
+        </EntityType>
+        <Association Name="FK_PlataformaGame_tbl_Game">
+          <End Type="StrategyGameModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="StrategyGameModel.PlataformaGame" Role="PlataformaGame" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Game">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Plataforma_Game">
+            <Dependent Role="PlataformaGame">
               <PropertyRef Name="GameID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Plataforma_Game_Plataforma">
-          <End Role="Plataforma" Type="Self.Plataforma" Multiplicity="1" />
-          <End Role="Plataforma_Game" Type="Self.Plataforma_Game" Multiplicity="*" />
+        <Association Name="FK_GrupoGamer_Gamer">
+          <End Type="StrategyGameModel.Gamer" Role="Gamer" Multiplicity="1" />
+          <End Type="StrategyGameModel.GrupoGamer" Role="GrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GrupoGamer">
+              <PropertyRef Name="GamerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GamerGame_tbl_Gamer1">
+          <End Type="StrategyGameModel.Gamer" Role="Gamer" Multiplicity="1" />
+          <End Type="StrategyGameModel.GamerGame" Role="GamerGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GamerGame">
+              <PropertyRef Name="GamerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_GamerGame_PlataformaGame">
+          <End Type="StrategyGameModel.PlataformaGame" Role="PlataformaGame" Multiplicity="1" />
+          <End Type="StrategyGameModel.GamerGame" Role="GamerGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlataformaGame">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GamerGame">
+              <PropertyRef Name="PlataformaGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupo_PlataformaGame">
+          <End Type="StrategyGameModel.PlataformaGame" Role="PlataformaGame" Multiplicity="1" />
+          <End Type="StrategyGameModel.Grupo" Role="Grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlataformaGame">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Grupo">
+              <PropertyRef Name="PlataformaGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoGamer_Grupo">
+          <End Type="StrategyGameModel.Grupo" Role="Grupo" Multiplicity="1" />
+          <End Type="StrategyGameModel.GrupoGamer" Role="GrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GrupoGamer">
+              <PropertyRef Name="GrupoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partidas_Grupo">
+          <End Type="StrategyGameModel.Grupo" Role="Grupo" Multiplicity="1" />
+          <End Type="StrategyGameModel.Partidas" Role="Partidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Partidas">
+              <PropertyRef Name="GrupoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlataformaGame_tbl_Plataforma">
+          <End Type="StrategyGameModel.Plataforma" Role="Plataforma" Multiplicity="1" />
+          <End Type="StrategyGameModel.PlataformaGame" Role="PlataformaGame" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Plataforma">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Plataforma_Game">
+            <Dependent Role="PlataformaGame">
               <PropertyRef Name="PlataformaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="db" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Game" EntityType="Self.Game" />
-          <EntitySet Name="Plataforma" EntityType="Self.Plataforma" />
-          <EntitySet Name="Plataforma_Game" EntityType="Self.Plataforma_Game" />
-          <AssociationSet Name="FK_Plataforma_Game_Game" Association="Self.FK_Plataforma_Game_Game">
-            <End Role="Game" EntitySet="Game" />
-            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Plataforma_Game_Plataforma" Association="Self.FK_Plataforma_Game_Plataforma">
-            <End Role="Plataforma" EntitySet="Plataforma" />
-            <End Role="Plataforma_Game" EntitySet="Plataforma_Game" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <EntityType Name="PartidasResultado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartidasID" Type="Int32" Nullable="false" />
+          <Property Name="Gamer" Type="Int32" Nullable="false" />
+          <Property Name="Pontos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Imagem" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Twitch" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Partidas" Relationship="StrategyGameModel.FK_PartidasResultado_Partidas" FromRole="PartidasResultado" ToRole="Partidas" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_PartidasResultado_Partidas">
+          <End Type="StrategyGameModel.Partidas" Role="Partidas" Multiplicity="1" />
+          <End Type="StrategyGameModel.PartidasResultado" Role="PartidasResultado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PartidasResultado">
+              <PropertyRef Name="PartidasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EstrategyGameModelStoreContainer" CdmEntityContainer="db">
+        <EntityContainerMapping StorageEntityContainer="StrategyGameModelStoreContainer" CdmEntityContainer="StrategyGameEntities">
           <EntitySetMapping Name="Game">
-            <EntityTypeMapping TypeName="EstrategyGameModel.Game">
+            <EntityTypeMapping TypeName="StrategyGameModel.Game">
               <MappingFragment StoreEntitySet="Game">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Imagem_GAM" ColumnName="Imagem_GAM" />
+                <ScalarProperty Name="Recomenda_GAM" ColumnName="Recomenda_GAM" />
+                <ScalarProperty Name="Ativo_GAM" ColumnName="Ativo_GAM" />
+                <ScalarProperty Name="DataCadastro_GAM" ColumnName="DataCadastro_GAM" />
+                <ScalarProperty Name="Nome_GAM" ColumnName="Nome_GAM" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gamer">
+            <EntityTypeMapping TypeName="StrategyGameModel.Gamer">
+              <MappingFragment StoreEntitySet="Gamer">
+                <ScalarProperty Name="Negatividade" ColumnName="Negatividade" />
+                <ScalarProperty Name="Positividade" ColumnName="Positividade" />
+                <ScalarProperty Name="Juiz_GMR" ColumnName="Juiz_GMR" />
+                <ScalarProperty Name="Senha_GMR" ColumnName="Senha_GMR" />
+                <ScalarProperty Name="Imagem_GMR" ColumnName="Imagem_GMR" />
+                <ScalarProperty Name="Fone_GMR" ColumnName="Fone_GMR" />
+                <ScalarProperty Name="Facebook_GMR" ColumnName="Facebook_GMR" />
+                <ScalarProperty Name="Twitch_GMR" ColumnName="Twitch_GMR" />
+                <ScalarProperty Name="Twitter_GMR" ColumnName="Twitter_GMR" />
+                <ScalarProperty Name="Youtube_GMR" ColumnName="Youtube_GMR" />
+                <ScalarProperty Name="Sexo_GMR" ColumnName="Sexo_GMR" />
+                <ScalarProperty Name="Nacionalidade" ColumnName="Nacionalidade" />
+                <ScalarProperty Name="Email_GMR" ColumnName="Email_GMR" />
+                <ScalarProperty Name="Ativo_GMR" ColumnName="Ativo_GMR" />
+                <ScalarProperty Name="DataNascimento_GMR" ColumnName="DataNascimento_GMR" />
+                <ScalarProperty Name="DataCadastro_GMR" ColumnName="DataCadastro_GMR" />
+                <ScalarProperty Name="Apelido_GMR" ColumnName="Apelido_GMR" />
+                <ScalarProperty Name="Sobrenome_GMR" ColumnName="Sobrenome_GMR" />
+                <ScalarProperty Name="Nome_GMR" ColumnName="Nome_GMR" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GamerGame">
+            <EntityTypeMapping TypeName="StrategyGameModel.GamerGame">
+              <MappingFragment StoreEntitySet="GamerGame">
+                <ScalarProperty Name="Data_GAMGMR" ColumnName="Data_GAMGMR" />
+                <ScalarProperty Name="PlataformaGameID" ColumnName="PlataformaGameID" />
+                <ScalarProperty Name="GamerID" ColumnName="GamerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupo">
+            <EntityTypeMapping TypeName="StrategyGameModel.Grupo">
+              <MappingFragment StoreEntitySet="Grupo">
+                <ScalarProperty Name="Recomendacoes_GRU" ColumnName="Recomendacoes_GRU" />
+                <ScalarProperty Name="Nivel_GRU" ColumnName="Nivel_GRU" />
+                <ScalarProperty Name="Twitch_GRU" ColumnName="Twitch_GRU" />
+                <ScalarProperty Name="Twitter_GRU" ColumnName="Twitter_GRU" />
+                <ScalarProperty Name="Youtube_GRU" ColumnName="Youtube_GRU" />
+                <ScalarProperty Name="Facebook_GRU" ColumnName="Facebook_GRU" />
+                <ScalarProperty Name="Site_GRU" ColumnName="Site_GRU" />
+                <ScalarProperty Name="Descricao_GRU" ColumnName="Descricao_GRU" />
+                <ScalarProperty Name="Ativo_GRU" ColumnName="Ativo_GRU" />
+                <ScalarProperty Name="DataCadastro_GRU" ColumnName="DataCadastro_GRU" />
+                <ScalarProperty Name="Imagem_GRU" ColumnName="Imagem_GRU" />
+                <ScalarProperty Name="PlataformaGameID" ColumnName="PlataformaGameID" />
+                <ScalarProperty Name="Nome_GRU" ColumnName="Nome_GRU" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Plataforma">
-            <EntityTypeMapping TypeName="EstrategyGameModel.Plataforma">
+            <EntityTypeMapping TypeName="StrategyGameModel.Plataforma">
               <MappingFragment StoreEntitySet="Plataforma">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Ativo_PLA" ColumnName="Ativo_PLA" />
+                <ScalarProperty Name="Fabricante_PLA" ColumnName="Fabricante_PLA" />
+                <ScalarProperty Name="Nome_PLA" ColumnName="Nome_PLA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Plataforma_Game">
-            <EntityTypeMapping TypeName="EstrategyGameModel.Plataforma_Game">
-              <MappingFragment StoreEntitySet="Plataforma_Game">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="PlataformaID" ColumnName="PlataformaID" />
+          <EntitySetMapping Name="GamerGrupo">
+            <EntityTypeMapping TypeName="StrategyGameModel.GamerGrupo">
+              <MappingFragment StoreEntitySet="GamerGrupo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupoGamer">
+            <EntityTypeMapping TypeName="StrategyGameModel.GrupoGamer">
+              <MappingFragment StoreEntitySet="GrupoGamer">
+                <ScalarProperty Name="GamerID" ColumnName="GamerID" />
+                <ScalarProperty Name="GrupoID" ColumnName="GrupoID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partidas">
+            <EntityTypeMapping TypeName="StrategyGameModel.Partidas">
+              <MappingFragment StoreEntitySet="Partidas">
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="Premiacao" ColumnName="Premiacao" />
+                <ScalarProperty Name="Duracao" ColumnName="Duracao" />
+                <ScalarProperty Name="QuantidadePartidas" ColumnName="QuantidadePartidas" />
+                <ScalarProperty Name="Juiz" ColumnName="Juiz" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
+                <ScalarProperty Name="GrupoID" ColumnName="GrupoID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlataformaGame">
+            <EntityTypeMapping TypeName="StrategyGameModel.PlataformaGame">
+              <MappingFragment StoreEntitySet="PlataformaGame">
                 <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="PlataformaID" ColumnName="PlataformaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartidasResultado">
+            <EntityTypeMapping TypeName="StrategyGameModel.PartidasResultado">
+              <MappingFragment StoreEntitySet="PartidasResultado">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Twitch" ColumnName="Twitch" />
+                <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+                <ScalarProperty Name="Pontos" ColumnName="Pontos" />
+                <ScalarProperty Name="Gamer" ColumnName="Gamer" />
+                <ScalarProperty Name="PartidasID" ColumnName="PartidasID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

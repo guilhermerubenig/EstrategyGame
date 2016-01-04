@@ -4,12 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9db13f530171481db534d66a26fca5cd" Name="Diagram1">
-        <EntityTypeShape EntityType="EstrategyGameModel.Game" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstrategyGameModel.Plataforma" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstrategyGameModel.Plataforma_Game" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="EstrategyGameModel.FK_Plataforma_Game_Game" ManuallyRouted="false" />
-        <AssociationConnector Association="EstrategyGameModel.FK_Plataforma_Game_Plataforma" ManuallyRouted="false" />
+      <Diagram DiagramId="0cf90a4911334d89bdbcef02e2e8af68" Name="Diagram1">
+        <EntityTypeShape EntityType="StrategyGameModel.Game" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="StrategyGameModel.Gamer" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="StrategyGameModel.GamerGame" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="StrategyGameModel.Grupo" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="StrategyGameModel.Plataforma" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="StrategyGameModel.GamerGrupo" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StrategyGameModel.GrupoGamer" Width="1.5" PointX="7.5" PointY="9.125" />
+        <EntityTypeShape EntityType="StrategyGameModel.Partidas" Width="1.5" PointX="7.5" PointY="12.625" />
+        <EntityTypeShape EntityType="StrategyGameModel.PlataformaGame" Width="1.5" PointX="3" PointY="7" />
+        <AssociationConnector Association="StrategyGameModel.FK_PlataformaGame_tbl_Game" />
+        <AssociationConnector Association="StrategyGameModel.FK_GrupoGamer_Gamer" />
+        <AssociationConnector Association="StrategyGameModel.FK_tbl_GamerGame_tbl_Gamer1" />
+        <AssociationConnector Association="StrategyGameModel.FK_tbl_GamerGame_PlataformaGame" />
+        <AssociationConnector Association="StrategyGameModel.FK_Grupo_PlataformaGame" />
+        <AssociationConnector Association="StrategyGameModel.FK_GrupoGamer_Grupo" />
+        <AssociationConnector Association="StrategyGameModel.FK_Partidas_Grupo" />
+        <AssociationConnector Association="StrategyGameModel.FK_PlataformaGame_tbl_Plataforma" />
+        <EntityTypeShape EntityType="StrategyGameModel.PartidasResultado" Width="1.5" PointX="9.75" PointY="12.875" />
+        <AssociationConnector Association="StrategyGameModel.FK_PartidasResultado_Partidas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -188,10 +188,31 @@
     <Compile Include="Dados\Game.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
+    <Compile Include="Dados\Gamer.cs">
+      <DependentUpon>StrategyGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dados\GamerGame.cs">
+      <DependentUpon>StrategyGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dados\GamerGrupo.cs">
+      <DependentUpon>StrategyGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dados\Grupo.cs">
+      <DependentUpon>StrategyGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dados\GrupoGamer.cs">
+      <DependentUpon>StrategyGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dados\Partidas.cs">
+      <DependentUpon>StrategyGame.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dados\PartidasResultado.cs">
+      <DependentUpon>StrategyGame.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dados\Plataforma.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\Plataforma_Game.cs">
+    <Compile Include="Dados\PlataformaGame.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
     <Compile Include="Dados\StrategyGame.Context.cs">
