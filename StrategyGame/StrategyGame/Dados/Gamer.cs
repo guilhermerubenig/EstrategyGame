@@ -18,6 +18,7 @@ namespace StrategyGame.Dados
         {
             this.GrupoGamer = new HashSet<GrupoGamer>();
             this.GamerGame = new HashSet<GamerGame>();
+            this.TorneioGrupoGamer = new HashSet<TorneioGrupoGamer>();
         }
     
         public int ID { get; set; }
@@ -37,11 +38,12 @@ namespace StrategyGame.Dados
         public string Fone_GMR { get; set; }
         public string Imagem_GMR { get; set; }
         public string Senha_GMR { get; set; }
-        public Nullable<bool> Juiz_GMR { get; set; }
         public Nullable<bool> Positividade { get; set; }
         public Nullable<bool> Negatividade { get; set; }
+        public Nullable<bool> Juiz_GMR { get; set; }
     
         public virtual ICollection<GrupoGamer> GrupoGamer { get; set; }
         public virtual ICollection<GamerGame> GamerGame { get; set; }
+        public virtual ICollection<TorneioGrupoGamer> TorneioGrupoGamer { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace StrategyGame.Dados
         public Grupo()
         {
             this.GrupoGamer = new HashSet<GrupoGamer>();
-            this.Partidas = new HashSet<Partidas>();
+            this.TorneioGrupoGamer = new HashSet<TorneioGrupoGamer>();
         }
     
         public int ID { get; set; }
@@ -37,6 +37,6 @@ namespace StrategyGame.Dados
     
         public virtual PlataformaGame PlataformaGame { get; set; }
         public virtual ICollection<GrupoGamer> GrupoGamer { get; set; }
-        public virtual ICollection<Partidas> Partidas { get; set; }
+        public virtual ICollection<TorneioGrupoGamer> TorneioGrupoGamer { get; set; }
     }
 }

@@ -97,13 +97,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GrupoID" Type="int" Nullable="false" />
+          <Property Name="TorneioID" Type="int" Nullable="false" />
           <Property Name="Horario" Type="datetime" Nullable="false" />
           <Property Name="Juiz" Type="bit" Nullable="false" />
           <Property Name="QuantidadePartidas" Type="int" Nullable="false" />
           <Property Name="Duracao" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Premiacao" Type="bit" />
-          <Property Name="Pago" Type="bit" />
+          <Property Name="Premiacao" Type="bit" Nullable="false" />
+          <Property Name="Pago" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PartidasResultado">
           <Key>
@@ -124,6 +124,27 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PlataformaID" Type="int" Nullable="false" />
           <Property Name="GameID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TorneioGrupoGamer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TorneioID" Type="int" />
+          <Property Name="GrupoID" Type="int" />
+          <Property Name="Gamer" Type="int" />
+        </EntityType>
+        <EntityType Name="Torneios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataInicio" Type="datetime" Nullable="false" />
+          <Property Name="DataFim" Type="datetime" Nullable="false" />
+          <Property Name="Local" Type="nchar" MaxLength="10" />
+          <Property Name="DataCadastro" Type="datetime" />
+          <Property Name="GamerID" Type="int" />
         </EntityType>
         <Association Name="FK_Grupo_PlataformaGame">
           <End Role="PlataformaGame" Type="Self.PlataformaGame" Multiplicity="1" />
@@ -161,15 +182,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Partidas_Grupo">
-          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+        <Association Name="FK_Partidas_Torneios">
+          <End Role="Torneios" Type="Self.Torneios" Multiplicity="1" />
           <End Role="Partidas" Type="Self.Partidas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Grupo">
+            <Principal Role="Torneios">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Partidas">
-              <PropertyRef Name="GrupoID" />
+              <PropertyRef Name="TorneioID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -233,6 +254,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TorneioGrupoGamer_Gamer">
+          <End Role="Gamer" Type="Self.Gamer" Multiplicity="0..1" />
+          <End Role="TorneioGrupoGamer" Type="Self.TorneioGrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TorneioGrupoGamer">
+              <PropertyRef Name="Gamer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TorneioGrupoGamer_Grupo">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+          <End Role="TorneioGrupoGamer" Type="Self.TorneioGrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TorneioGrupoGamer">
+              <PropertyRef Name="GrupoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TorneioGrupoGamer_Torneios1">
+          <End Role="Torneios" Type="Self.Torneios" Multiplicity="0..1" />
+          <End Role="TorneioGrupoGamer" Type="Self.TorneioGrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Torneios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TorneioGrupoGamer">
+              <PropertyRef Name="TorneioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="StrategyGameModelStoreContainer">
           <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gamer" EntityType="Self.Gamer" Schema="dbo" store:Type="Tables" />
@@ -244,6 +301,8 @@
           <EntitySet Name="Partidas" EntityType="Self.Partidas" Schema="strategygame" store:Type="Tables" />
           <EntitySet Name="PartidasResultado" EntityType="Self.PartidasResultado" Schema="strategygame" store:Type="Tables" />
           <EntitySet Name="PlataformaGame" EntityType="Self.PlataformaGame" Schema="strategygame" store:Type="Tables" />
+          <EntitySet Name="TorneioGrupoGamer" EntityType="Self.TorneioGrupoGamer" Schema="strategygame" store:Type="Tables" />
+          <EntitySet Name="Torneios" EntityType="Self.Torneios" Schema="strategygame" store:Type="Tables" />
           <AssociationSet Name="FK_Grupo_PlataformaGame" Association="Self.FK_Grupo_PlataformaGame">
             <End Role="PlataformaGame" EntitySet="PlataformaGame" />
             <End Role="Grupo" EntitySet="Grupo" />
@@ -256,8 +315,8 @@
             <End Role="Grupo" EntitySet="Grupo" />
             <End Role="GrupoGamer" EntitySet="GrupoGamer" />
           </AssociationSet>
-          <AssociationSet Name="FK_Partidas_Grupo" Association="Self.FK_Partidas_Grupo">
-            <End Role="Grupo" EntitySet="Grupo" />
+          <AssociationSet Name="FK_Partidas_Torneios" Association="Self.FK_Partidas_Torneios">
+            <End Role="Torneios" EntitySet="Torneios" />
             <End Role="Partidas" EntitySet="Partidas" />
           </AssociationSet>
           <AssociationSet Name="FK_PartidasResultado_Partidas" Association="Self.FK_PartidasResultado_Partidas">
@@ -280,6 +339,18 @@
             <End Role="Gamer" EntitySet="Gamer" />
             <End Role="GamerGame" EntitySet="GamerGame" />
           </AssociationSet>
+          <AssociationSet Name="FK_TorneioGrupoGamer_Gamer" Association="Self.FK_TorneioGrupoGamer_Gamer">
+            <End Role="Gamer" EntitySet="Gamer" />
+            <End Role="TorneioGrupoGamer" EntitySet="TorneioGrupoGamer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TorneioGrupoGamer_Grupo" Association="Self.FK_TorneioGrupoGamer_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="TorneioGrupoGamer" EntitySet="TorneioGrupoGamer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TorneioGrupoGamer_Torneios1" Association="Self.FK_TorneioGrupoGamer_Torneios1">
+            <End Role="Torneios" EntitySet="Torneios" />
+            <End Role="TorneioGrupoGamer" EntitySet="TorneioGrupoGamer" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -294,7 +365,10 @@
           <EntitySet Name="GamerGrupo" EntityType="StrategyGameModel.GamerGrupo" />
           <EntitySet Name="GrupoGamer" EntityType="StrategyGameModel.GrupoGamer" />
           <EntitySet Name="Partidas" EntityType="StrategyGameModel.Partidas" />
+          <EntitySet Name="PartidasResultado" EntityType="StrategyGameModel.PartidasResultado" />
           <EntitySet Name="PlataformaGame" EntityType="StrategyGameModel.PlataformaGame" />
+          <EntitySet Name="TorneioGrupoGamer" EntityType="StrategyGameModel.TorneioGrupoGamer" />
+          <EntitySet Name="Torneios" EntityType="StrategyGameModel.Torneios" />
           <AssociationSet Name="FK_PlataformaGame_tbl_Game" Association="StrategyGameModel.FK_PlataformaGame_tbl_Game">
             <End Role="Game" EntitySet="Game" />
             <End Role="PlataformaGame" EntitySet="PlataformaGame" />
@@ -306,6 +380,10 @@
           <AssociationSet Name="FK_tbl_GamerGame_tbl_Gamer1" Association="StrategyGameModel.FK_tbl_GamerGame_tbl_Gamer1">
             <End Role="Gamer" EntitySet="Gamer" />
             <End Role="GamerGame" EntitySet="GamerGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TorneioGrupoGamer_Gamer" Association="StrategyGameModel.FK_TorneioGrupoGamer_Gamer">
+            <End Role="Gamer" EntitySet="Gamer" />
+            <End Role="TorneioGrupoGamer" EntitySet="TorneioGrupoGamer" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_GamerGame_PlataformaGame" Association="StrategyGameModel.FK_tbl_GamerGame_PlataformaGame">
             <End Role="PlataformaGame" EntitySet="PlataformaGame" />
@@ -319,18 +397,25 @@
             <End Role="Grupo" EntitySet="Grupo" />
             <End Role="GrupoGamer" EntitySet="GrupoGamer" />
           </AssociationSet>
-          <AssociationSet Name="FK_Partidas_Grupo" Association="StrategyGameModel.FK_Partidas_Grupo">
+          <AssociationSet Name="FK_TorneioGrupoGamer_Grupo" Association="StrategyGameModel.FK_TorneioGrupoGamer_Grupo">
             <End Role="Grupo" EntitySet="Grupo" />
-            <End Role="Partidas" EntitySet="Partidas" />
+            <End Role="TorneioGrupoGamer" EntitySet="TorneioGrupoGamer" />
           </AssociationSet>
           <AssociationSet Name="FK_PlataformaGame_tbl_Plataforma" Association="StrategyGameModel.FK_PlataformaGame_tbl_Plataforma">
             <End Role="Plataforma" EntitySet="Plataforma" />
             <End Role="PlataformaGame" EntitySet="PlataformaGame" />
           </AssociationSet>
-          <EntitySet Name="PartidasResultado" EntityType="StrategyGameModel.PartidasResultado" />
+          <AssociationSet Name="FK_Partidas_Torneios" Association="StrategyGameModel.FK_Partidas_Torneios">
+            <End Role="Torneios" EntitySet="Torneios" />
+            <End Role="Partidas" EntitySet="Partidas" />
+          </AssociationSet>
           <AssociationSet Name="FK_PartidasResultado_Partidas" Association="StrategyGameModel.FK_PartidasResultado_Partidas">
             <End Role="Partidas" EntitySet="Partidas" />
             <End Role="PartidasResultado" EntitySet="PartidasResultado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TorneioGrupoGamer_Torneios1" Association="StrategyGameModel.FK_TorneioGrupoGamer_Torneios1">
+            <End Role="Torneios" EntitySet="Torneios" />
+            <End Role="TorneioGrupoGamer" EntitySet="TorneioGrupoGamer" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Game">
@@ -366,11 +451,12 @@
           <Property Name="Fone_GMR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Imagem_GMR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Senha_GMR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Positividade" Type="Boolean" />
+          <Property Name="Negatividade" Type="Boolean" />
           <Property Name="Juiz_GMR" Type="Boolean" />
           <NavigationProperty Name="GrupoGamer" Relationship="StrategyGameModel.FK_GrupoGamer_Gamer" FromRole="Gamer" ToRole="GrupoGamer" />
           <NavigationProperty Name="GamerGame" Relationship="StrategyGameModel.FK_tbl_GamerGame_tbl_Gamer1" FromRole="Gamer" ToRole="GamerGame" />
-          <Property Name="Positividade" Type="Boolean" />
-          <Property Name="Negatividade" Type="Boolean" />
+          <NavigationProperty Name="TorneioGrupoGamer" Relationship="StrategyGameModel.FK_TorneioGrupoGamer_Gamer" FromRole="Gamer" ToRole="TorneioGrupoGamer" />
         </EntityType>
         <EntityType Name="GamerGame">
           <Key>
@@ -403,7 +489,7 @@
           <Property Name="Recomendacoes_GRU" Type="Int32" />
           <NavigationProperty Name="PlataformaGame" Relationship="StrategyGameModel.FK_Grupo_PlataformaGame" FromRole="Grupo" ToRole="PlataformaGame" />
           <NavigationProperty Name="GrupoGamer" Relationship="StrategyGameModel.FK_GrupoGamer_Grupo" FromRole="Grupo" ToRole="GrupoGamer" />
-          <NavigationProperty Name="Partidas" Relationship="StrategyGameModel.FK_Partidas_Grupo" FromRole="Grupo" ToRole="Partidas" />
+          <NavigationProperty Name="TorneioGrupoGamer" Relationship="StrategyGameModel.FK_TorneioGrupoGamer_Grupo" FromRole="Grupo" ToRole="TorneioGrupoGamer" />
         </EntityType>
         <EntityType Name="Plataforma">
           <Key>
@@ -436,15 +522,28 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GrupoID" Type="Int32" Nullable="false" />
+          <Property Name="TorneioID" Type="Int32" Nullable="false" />
           <Property Name="Horario" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Juiz" Type="Boolean" Nullable="false" />
           <Property Name="QuantidadePartidas" Type="Int32" Nullable="false" />
-          <Property Name="Duracao" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Grupo" Relationship="StrategyGameModel.FK_Partidas_Grupo" FromRole="Partidas" ToRole="Grupo" />
-          <Property Name="Premiacao" Type="Boolean" />
-          <Property Name="Pago" Type="Boolean" />
+          <Property Name="Duracao" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Premiacao" Type="Boolean" Nullable="false" />
+          <Property Name="Pago" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Torneios" Relationship="StrategyGameModel.FK_Partidas_Torneios" FromRole="Partidas" ToRole="Torneios" />
           <NavigationProperty Name="PartidasResultado" Relationship="StrategyGameModel.FK_PartidasResultado_Partidas" FromRole="Partidas" ToRole="PartidasResultado" />
+        </EntityType>
+        <EntityType Name="PartidasResultado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartidasID" Type="Int32" Nullable="false" />
+          <Property Name="Gamer" Type="Int32" Nullable="false" />
+          <Property Name="Pontos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Imagem" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Twitch" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Partidas" Relationship="StrategyGameModel.FK_PartidasResultado_Partidas" FromRole="PartidasResultado" ToRole="Partidas" />
         </EntityType>
         <EntityType Name="PlataformaGame">
           <Key>
@@ -457,6 +556,32 @@
           <NavigationProperty Name="GamerGame" Relationship="StrategyGameModel.FK_tbl_GamerGame_PlataformaGame" FromRole="PlataformaGame" ToRole="GamerGame" />
           <NavigationProperty Name="Grupo" Relationship="StrategyGameModel.FK_Grupo_PlataformaGame" FromRole="PlataformaGame" ToRole="Grupo" />
           <NavigationProperty Name="Plataforma" Relationship="StrategyGameModel.FK_PlataformaGame_tbl_Plataforma" FromRole="PlataformaGame" ToRole="Plataforma" />
+        </EntityType>
+        <EntityType Name="TorneioGrupoGamer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TorneioID" Type="Int32" />
+          <Property Name="GrupoID" Type="Int32" />
+          <Property Name="Gamer" Type="Int32" />
+          <NavigationProperty Name="Gamer1" Relationship="StrategyGameModel.FK_TorneioGrupoGamer_Gamer" FromRole="TorneioGrupoGamer" ToRole="Gamer" />
+          <NavigationProperty Name="Grupo" Relationship="StrategyGameModel.FK_TorneioGrupoGamer_Grupo" FromRole="TorneioGrupoGamer" ToRole="Grupo" />
+          <NavigationProperty Name="Torneios" Relationship="StrategyGameModel.FK_TorneioGrupoGamer_Torneios1" FromRole="TorneioGrupoGamer" ToRole="Torneios" />
+        </EntityType>
+        <EntityType Name="Torneios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DataInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataFim" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Local" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DataCadastro" Type="DateTime" Precision="3" />
+          <Property Name="GamerID" Type="Int32" />
+          <NavigationProperty Name="Partidas" Relationship="StrategyGameModel.FK_Partidas_Torneios" FromRole="Torneios" ToRole="Partidas" />
+          <NavigationProperty Name="TorneioGrupoGamer" Relationship="StrategyGameModel.FK_TorneioGrupoGamer_Torneios1" FromRole="Torneios" ToRole="TorneioGrupoGamer" />
         </EntityType>
         <Association Name="FK_PlataformaGame_tbl_Game">
           <End Type="StrategyGameModel.Game" Role="Game" Multiplicity="1" />
@@ -491,6 +616,18 @@
             </Principal>
             <Dependent Role="GamerGame">
               <PropertyRef Name="GamerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TorneioGrupoGamer_Gamer">
+          <End Type="StrategyGameModel.Gamer" Role="Gamer" Multiplicity="0..1" />
+          <End Type="StrategyGameModel.TorneioGrupoGamer" Role="TorneioGrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gamer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TorneioGrupoGamer">
+              <PropertyRef Name="Gamer" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -530,14 +667,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Partidas_Grupo">
-          <End Type="StrategyGameModel.Grupo" Role="Grupo" Multiplicity="1" />
-          <End Type="StrategyGameModel.Partidas" Role="Partidas" Multiplicity="*" />
+        <Association Name="FK_TorneioGrupoGamer_Grupo">
+          <End Type="StrategyGameModel.Grupo" Role="Grupo" Multiplicity="0..1" />
+          <End Type="StrategyGameModel.TorneioGrupoGamer" Role="TorneioGrupoGamer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Grupo">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Partidas">
+            <Dependent Role="TorneioGrupoGamer">
               <PropertyRef Name="GrupoID" />
             </Dependent>
           </ReferentialConstraint>
@@ -554,19 +691,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="PartidasResultado">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PartidasID" Type="Int32" Nullable="false" />
-          <Property Name="Gamer" Type="Int32" Nullable="false" />
-          <Property Name="Pontos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Imagem" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Twitch" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Partidas" Relationship="StrategyGameModel.FK_PartidasResultado_Partidas" FromRole="PartidasResultado" ToRole="Partidas" />
-          <Property Name="Data" Type="DateTime" Precision="3" />
-        </EntityType>
+        <Association Name="FK_Partidas_Torneios">
+          <End Type="StrategyGameModel.Torneios" Role="Torneios" Multiplicity="1" />
+          <End Type="StrategyGameModel.Partidas" Role="Partidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Torneios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Partidas">
+              <PropertyRef Name="TorneioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PartidasResultado_Partidas">
           <End Type="StrategyGameModel.Partidas" Role="Partidas" Multiplicity="1" />
           <End Type="StrategyGameModel.PartidasResultado" Role="PartidasResultado" Multiplicity="*" />
@@ -576,6 +712,18 @@
             </Principal>
             <Dependent Role="PartidasResultado">
               <PropertyRef Name="PartidasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TorneioGrupoGamer_Torneios1">
+          <End Type="StrategyGameModel.Torneios" Role="Torneios" Multiplicity="0..1" />
+          <End Type="StrategyGameModel.TorneioGrupoGamer" Role="TorneioGrupoGamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Torneios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TorneioGrupoGamer">
+              <PropertyRef Name="TorneioID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -600,9 +748,9 @@
           <EntitySetMapping Name="Gamer">
             <EntityTypeMapping TypeName="StrategyGameModel.Gamer">
               <MappingFragment StoreEntitySet="Gamer">
+                <ScalarProperty Name="Juiz_GMR" ColumnName="Juiz_GMR" />
                 <ScalarProperty Name="Negatividade" ColumnName="Negatividade" />
                 <ScalarProperty Name="Positividade" ColumnName="Positividade" />
-                <ScalarProperty Name="Juiz_GMR" ColumnName="Juiz_GMR" />
                 <ScalarProperty Name="Senha_GMR" ColumnName="Senha_GMR" />
                 <ScalarProperty Name="Imagem_GMR" ColumnName="Imagem_GMR" />
                 <ScalarProperty Name="Fone_GMR" ColumnName="Fone_GMR" />
@@ -688,16 +836,7 @@
                 <ScalarProperty Name="QuantidadePartidas" ColumnName="QuantidadePartidas" />
                 <ScalarProperty Name="Juiz" ColumnName="Juiz" />
                 <ScalarProperty Name="Horario" ColumnName="Horario" />
-                <ScalarProperty Name="GrupoID" ColumnName="GrupoID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlataformaGame">
-            <EntityTypeMapping TypeName="StrategyGameModel.PlataformaGame">
-              <MappingFragment StoreEntitySet="PlataformaGame">
-                <ScalarProperty Name="GameID" ColumnName="GameID" />
-                <ScalarProperty Name="PlataformaID" ColumnName="PlataformaID" />
+                <ScalarProperty Name="TorneioID" ColumnName="TorneioID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -711,6 +850,38 @@
                 <ScalarProperty Name="Pontos" ColumnName="Pontos" />
                 <ScalarProperty Name="Gamer" ColumnName="Gamer" />
                 <ScalarProperty Name="PartidasID" ColumnName="PartidasID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlataformaGame">
+            <EntityTypeMapping TypeName="StrategyGameModel.PlataformaGame">
+              <MappingFragment StoreEntitySet="PlataformaGame">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="PlataformaID" ColumnName="PlataformaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TorneioGrupoGamer">
+            <EntityTypeMapping TypeName="StrategyGameModel.TorneioGrupoGamer">
+              <MappingFragment StoreEntitySet="TorneioGrupoGamer">
+                <ScalarProperty Name="Gamer" ColumnName="Gamer" />
+                <ScalarProperty Name="GrupoID" ColumnName="GrupoID" />
+                <ScalarProperty Name="TorneioID" ColumnName="TorneioID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Torneios">
+            <EntityTypeMapping TypeName="StrategyGameModel.Torneios">
+              <MappingFragment StoreEntitySet="Torneios">
+                <ScalarProperty Name="GamerID" ColumnName="GamerID" />
+                <ScalarProperty Name="DataCadastro" ColumnName="DataCadastro" />
+                <ScalarProperty Name="Local" ColumnName="Local" />
+                <ScalarProperty Name="DataFim" ColumnName="DataFim" />
+                <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

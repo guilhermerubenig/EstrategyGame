@@ -20,15 +20,15 @@ namespace StrategyGame.Dados
         }
     
         public int ID { get; set; }
-        public int GrupoID { get; set; }
+        public int TorneioID { get; set; }
         public System.DateTime Horario { get; set; }
         public bool Juiz { get; set; }
         public int QuantidadePartidas { get; set; }
-        public int Duracao { get; set; }
-        public Nullable<bool> Premiacao { get; set; }
-        public Nullable<bool> Pago { get; set; }
+        public System.TimeSpan Duracao { get; set; }
+        public bool Premiacao { get; set; }
+        public bool Pago { get; set; }
     
-        public virtual Grupo Grupo { get; set; }
+        public virtual Torneios Torneios { get; set; }
         public virtual ICollection<PartidasResultado> PartidasResultado { get; set; }
     }
 }

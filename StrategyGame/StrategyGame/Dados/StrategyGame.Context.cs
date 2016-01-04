@@ -33,7 +33,9 @@ namespace StrategyGame.Dados
         public DbSet<GamerGrupo> GamerGrupo { get; set; }
         public DbSet<GrupoGamer> GrupoGamer { get; set; }
         public DbSet<Partidas> Partidas { get; set; }
-        public DbSet<PlataformaGame> PlataformaGame { get; set; }
         public DbSet<PartidasResultado> PartidasResultado { get; set; }
+        public DbSet<PlataformaGame> PlataformaGame { get; set; }
+        public DbSet<TorneioGrupoGamer> TorneioGrupoGamer { get; set; }
+        public DbSet<Torneios> Torneios { get; set; }
     }
 }
