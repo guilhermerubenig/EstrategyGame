@@ -28,5 +28,12 @@ namespace StrategyGame.Controllers
 
             return View();
         }
+
+        public ActionResult Gamer()
+        {
+            ViewBag.Message = "Aqui será o cadastro do Gamer";
+
+            return View();
+        }
     }
 }
