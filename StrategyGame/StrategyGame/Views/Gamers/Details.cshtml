@@ -1,17 +1,17 @@
 ﻿@model StrategyGame.Models.Gamer
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
     <h4>Gamer</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nome_GMR)
+            @Html.Label("Juiz:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sobrenome_GMR)
+            @Html.Label("Sobrenome:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Apelido_GMR)
+            @Html.Label("Apelido:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DataCadastro_GMR)
+            @Html.Label("Data Cadastro:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DataNascimento_GMR)
+            @Html.Label("Data Nascimento:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -51,7 +51,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ativo_GMR)
+            @Html.Label("Ativo:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -59,7 +59,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email_GMR)
+            @Html.Label("Email:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -67,7 +67,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nacionalidade)
+            @Html.Label("Nacionalidade:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -75,7 +75,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sexo_GMR)
+            @Html.Label("Sexo:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -83,7 +83,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Youtube_GMR)
+            @Html.Label("Youtube:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -91,7 +91,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Twitter_GMR)
+            @Html.Label("Twitter:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -99,7 +99,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Twitch_GMR)
+            @Html.Label("Twitch:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -107,7 +107,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Facebook_GMR)
+            @Html.Label("Facebook:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -115,30 +115,30 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fone_GMR)
+            @Html.Label("Telefone:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Fone_GMR)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Imagem_GMR)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Imagem_GMR)
-        </dd>
+        </dd>*@
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Senha_GMR)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Senha_GMR)
-        </dd>
+        </dd>*@
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Positividade)
         </dt>
 
@@ -152,10 +152,10 @@
 
         <dd>
             @Html.DisplayFor(model => model.Negatividade)
-        </dd>
+        </dd>*@
 
         <dt>
-            @Html.DisplayNameFor(model => model.Juiz_GMR)
+            @Html.Label("Juiz:", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -166,5 +166,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar a lista", "Index")
 </p>

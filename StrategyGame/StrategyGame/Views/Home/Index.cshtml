@@ -1,0 +1,182 @@
+﻿@model StrategyGame.Models.Gamer
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Custom Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="~/Content/font-awesome/css/font-awesome.min.css" type="text/css">
+<!-- Plugin CSS -->
+<link rel="stylesheet" href="~/Content/animate.min.css" type="text/css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="~/Content/creative.css" type="text/css">
+
+@using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Página Inicial</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#cadastro">Cadastre-se</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#sobre">Sobre</a>
+                    </li>
+                    <!--<li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>-->
+                    <li>
+                        <a class="page-scroll" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>strategy game</h1>
+                <hr>
+                <h2>Criar um torneio, gerenciar um calendário, se comunicar e arquivar resultados nunca foi tão simples!</h2>
+                <a href="#cadastro" class="btn btn-primary btn-xl page-scroll">Cadastre-se</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="cadastro">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Cadastro de Gamer</h2>
+                    <hr class="light">
+
+                    <div class="form-group">
+                        <label for="nome">Apelido</label> 
+                        <input type="text" class="form-control" id="apelido" name="apelido">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control"  id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Confirmarsenha">Confirmar senha</label>
+                        <input type="password" class="form-control" id="Confirmarsenha" name="Confirmarsenha">
+                    </div>
+
+                    <input type="button" id="bCadastrar" class="btn btn-default btn-xl" value="Enviar"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Tudo que você precisa, onde você precisa!</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+                        <h3>Torneios</h3>
+                        <p class="text-muted">Torneios esportivos, jogos eletrônicos, jogos de cartas, jogos de tabuleiro, gerencie todos os tipos de torneios, sem distinção.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3>Gratuito e imediato</h3>
+                        <p class="text-muted">Por que sempre pagar para obter qualidade? Insira seu torneio em um clique e ele estará imediatamente pronto.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                        <h3>Valorize seus torneios</h3>
+                        <p class="text-muted">Strategy Game oferece ferramentas de gestão, mas também a visibilidade na Internet e nas redes sociais.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                        <h3>Resultados</h3>
+                        <p class="text-muted">Não desperdice suas folhas de resultados tendo que carregá-las por todo lado, o tempo todo, seu torneio estará salvo no Tournikoti.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Crie o seu próprio torneio e convide seus amigos!</h2>
+                <!--<a href="#" class="btn btn-default btn-xl wow tada">??</a>-->
+            </div>
+        </div>
+    </aside>
+
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Entre em contato com o Strategy Game!</h2>
+                    <hr class="primary">
+                    <p>Entre em contato para tirar dúvidas, criticas e sugestões, teremos prazer em receber o seu e-mail.</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><a href="mailto:your-email@your-domain.com">feedback@strategygame.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="~/scripts/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="~/scripts/bootstrap.min.js"></script>
+        <!-- Plugin JavaScript -->
+        <script src="~/scripts/jquery.easing.min.js"></script>
+        <script src="~/scripts/jquery.fittext.js"></script>
+        <script src="~/scripts/wow.min.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="~/scripts/creative.js"></script>
+}

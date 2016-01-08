@@ -127,11 +127,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\creative.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\login_estilo.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\header.jpg" />
     <Content Include="Models\StrategyGame.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StrategyGame.edmx</DependentUpon>
@@ -161,7 +167,13 @@
     <Content Include="Models\StrategyGame.edmx.diagram">
       <DependentUpon>StrategyGame.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
     <None Include="scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="scripts\creative.js" />
     <Content Include="scripts\Gamer\GamerCreate.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -172,16 +184,21 @@
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.easing.min.js" />
+    <Content Include="scripts\jquery.fittext.js" />
     <Content Include="scripts\jquery.validate.js" />
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\wow.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GamersController.cs" />
+    <Compile Include="Controllers\Gamer\GamersController.cs" />
+    <Compile Include="Controllers\Account\AccountController.cs" />
+    <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Models\Game.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
@@ -252,6 +269,8 @@
     <Content Include="Views\Gamers\Details.cshtml" />
     <Content Include="Views\Gamers\Edit.cshtml" />
     <Content Include="Views\Gamers\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -261,9 +280,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Dados\" />
-    <Folder Include="Views\Grupo\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Perfil\" />
   </ItemGroup>
   <ItemGroup>

@@ -7,66 +7,50 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nome_GMR)
+            @Html.Label("Nome:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sobrenome_GMR)
+            @Html.Label("Sobrenome:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Apelido_GMR)
+            @Html.Label("Apelido:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataCadastro_GMR)
+            @Html.Label("Data Cadastro:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataNascimento_GMR)
+            @Html.Label("Data Nascimento:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ativo_GMR)
+            @Html.Label("Ativo:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email_GMR)
+            @Html.Label("E-mail:", htmlAttributes: new { @class = "control-label col-md-2" })
+        </th>
+        
+        <th>
+            @Html.Label("Youtube:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nacionalidade)
+            @Html.Label("Twitter:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sexo_GMR)
+            @Html.Label("Twitch:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Youtube_GMR)
+            @Html.Label("Facebook:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Twitter_GMR)
+            @Html.Label("Telefone:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
+       
         <th>
-            @Html.DisplayNameFor(model => model.Twitch_GMR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Facebook_GMR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fone_GMR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagem_GMR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Senha_GMR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Positividade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Negatividade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Juiz_GMR)
+            @Html.Label("Juiz:", htmlAttributes: new { @class = "control-label col-md-2" })
         </th>
         <th></th>
     </tr>
@@ -94,12 +78,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email_GMR)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nacionalidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo_GMR)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Youtube_GMR)
         </td>
@@ -115,25 +94,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Fone_GMR)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagem_GMR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Senha_GMR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Positividade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Negatividade)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Juiz_GMR)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Alteração", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

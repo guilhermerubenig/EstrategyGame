@@ -39,7 +39,7 @@
           <Property Name="Senha_GMR" Type="varchar" MaxLength="20" />
           <Property Name="Positividade" Type="bit" />
           <Property Name="Negatividade" Type="bit" />
-          <Property Name="Juiz_GMR" Type="bit" />
+          <Property Name="Juiz_GMR" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="GamerGame">
           <Key>
@@ -391,7 +391,7 @@
           <Property Name="Senha_GMR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Positividade" Type="Boolean" />
           <Property Name="Negatividade" Type="Boolean" />
-          <Property Name="Juiz_GMR" Type="Boolean" />
+          <Property Name="Juiz_GMR" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="GrupoGamer" Relationship="Self.FK_GrupoGamer_Gamer" FromRole="Gamer" ToRole="GrupoGamer" />
           <NavigationProperty Name="GamerGame" Relationship="Self.FK_tbl_GamerGame_tbl_Gamer1" FromRole="Gamer" ToRole="GamerGame" />
           <NavigationProperty Name="TorneioGrupoGamer" Relationship="Self.FK_TorneioGrupoGamer_Gamer" FromRole="Gamer" ToRole="TorneioGrupoGamer" />
