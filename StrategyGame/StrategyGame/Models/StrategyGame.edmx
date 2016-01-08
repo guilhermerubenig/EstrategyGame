@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StrategyGameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StrategyGameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Game">
           <Key>
             <PropertyRef Name="ID" />
@@ -24,8 +24,8 @@
           <Property Name="Nome_GMR" Type="varchar" MaxLength="100" />
           <Property Name="Sobrenome_GMR" Type="varchar" MaxLength="100" />
           <Property Name="Apelido_GMR" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="DataCadastro_GMR" Type="smalldatetime" Nullable="false" />
-          <Property Name="DataNascimento_GMR" Type="smalldatetime" />
+          <Property Name="DataCadastro_GMR" Type="datetime" Nullable="false" />
+          <Property Name="DataNascimento_GMR" Type="datetime" />
           <Property Name="Ativo_GMR" Type="bit" Nullable="false" />
           <Property Name="Email_GMR" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Nacionalidade" Type="varchar" MaxLength="50" />
@@ -352,8 +352,7 @@
             <End Role="TorneioGrupoGamer" EntitySet="TorneioGrupoGamer" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StrategyGameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -377,8 +376,8 @@
           <Property Name="Nome_GMR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Sobrenome_GMR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Apelido_GMR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataCadastro_GMR" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DataNascimento_GMR" Type="DateTime" Precision="0" />
+          <Property Name="DataCadastro_GMR" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataNascimento_GMR" Type="DateTime" Precision="3" />
           <Property Name="Ativo_GMR" Type="Boolean" Nullable="false" />
           <Property Name="Email_GMR" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nacionalidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

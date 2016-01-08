@@ -1,0 +1,141 @@
+﻿@model IEnumerable<StrategyGame.Models.Gamer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sobrenome_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apelido_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCadastro_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nacionalidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Youtube_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Twitter_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Twitch_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Facebook_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fone_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagem_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Senha_GMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Positividade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Negatividade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Juiz_GMR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sobrenome_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apelido_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCadastro_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nacionalidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Youtube_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Twitter_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Twitch_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Facebook_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fone_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imagem_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Senha_GMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Positividade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Negatividade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Juiz_GMR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

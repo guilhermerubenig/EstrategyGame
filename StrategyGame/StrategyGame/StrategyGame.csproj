@@ -131,12 +131,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Dados\StrategyGame.Context.tt">
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\StrategyGame.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StrategyGame.edmx</DependentUpon>
       <LastGenOutput>StrategyGame.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Dados\StrategyGame.tt">
+    <Content Include="Models\StrategyGame.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StrategyGame.edmx</DependentUpon>
       <LastGenOutput>StrategyGame.cs</LastGenOutput>
@@ -153,71 +154,83 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Dados\StrategyGame.edmx">
+    <EntityDeploy Include="Models\StrategyGame.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StrategyGame.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Dados\StrategyGame.edmx.diagram">
+    <Content Include="Models\StrategyGame.edmx.diagram">
       <DependentUpon>StrategyGame.edmx</DependentUpon>
     </Content>
+    <None Include="scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="scripts\Gamer\GamerCreate.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Dados\Game.cs">
+    <Compile Include="Controllers\GamersController.cs" />
+    <Compile Include="Models\Game.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\Gamer.cs">
+    <Compile Include="Models\Gamer.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\GamerGame.cs">
+    <Compile Include="Models\GamerGame.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\GamerGrupo.cs">
+    <Compile Include="Models\GamerGrupo.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\Grupo.cs">
+    <Compile Include="Models\Grupo.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\GrupoGamer.cs">
+    <Compile Include="Models\GrupoGamer.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\Partidas.cs">
+    <Compile Include="Models\Partidas.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\PartidasResultado.cs">
+    <Compile Include="Models\PartidasResultado.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\Plataforma.cs">
+    <Compile Include="Models\Plataforma.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\PlataformaGame.cs">
+    <Compile Include="Models\PlataformaGame.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\StrategyGame.Context.cs">
+    <Compile Include="Models\StrategyGame.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StrategyGame.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\StrategyGame.cs">
+    <Compile Include="Models\StrategyGame.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\StrategyGame.Designer.cs">
+    <Compile Include="Models\StrategyGame.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StrategyGame.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Dados\TorneioGrupoGamer.cs">
+    <Compile Include="Models\TorneioGrupoGamer.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dados\Torneios.cs">
+    <Compile Include="Models\Torneios.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -232,6 +245,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Gamers\Create.cshtml" />
+    <Content Include="Views\Gamers\Delete.cshtml" />
+    <Content Include="Views\Gamers\Details.cshtml" />
+    <Content Include="Views\Gamers\Edit.cshtml" />
+    <Content Include="Views\Gamers\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -241,8 +261,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Dados\" />
+    <Folder Include="Views\Grupo\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Perfil\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

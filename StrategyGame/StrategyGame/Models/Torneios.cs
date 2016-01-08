@@ -7,25 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StrategyGame.Dados
+namespace StrategyGame.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Plataforma
+    public partial class Torneios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Plataforma()
+        public Torneios()
         {
-            this.PlataformaGame = new HashSet<PlataformaGame>();
+            this.Partidas = new HashSet<Partidas>();
+            this.TorneioGrupoGamer = new HashSet<TorneioGrupoGamer>();
         }
     
         public int ID { get; set; }
-        public string Nome_PLA { get; set; }
-        public string Fabricante_PLA { get; set; }
-        public Nullable<bool> Ativo_PLA { get; set; }
+        public string Nome { get; set; }
+        public System.DateTime DataInicio { get; set; }
+        public System.DateTime DataFim { get; set; }
+        public string Local { get; set; }
+        public Nullable<System.DateTime> DataCadastro { get; set; }
+        public Nullable<int> GamerID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlataformaGame> PlataformaGame { get; set; }
+        public virtual ICollection<Partidas> Partidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TorneioGrupoGamer> TorneioGrupoGamer { get; set; }
     }
 }

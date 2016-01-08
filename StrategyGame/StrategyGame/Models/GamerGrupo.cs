@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StrategyGame.Dados
+namespace StrategyGame.Models
 {
     using System;
     using System.Collections.Generic;

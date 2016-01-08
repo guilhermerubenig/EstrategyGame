@@ -1,0 +1,176 @@
+﻿@model StrategyGame.Models.Gamer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Gamer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sobrenome_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sobrenome_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apelido_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apelido_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCadastro_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacionalidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nacionalidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Youtube_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Youtube_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Twitter_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Twitter_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Twitch_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Twitch_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Facebook_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facebook_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fone_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fone_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagem_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imagem_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha_GMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Positividade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Positividade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Negatividade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Negatividade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Juiz_GMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Juiz_GMR)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

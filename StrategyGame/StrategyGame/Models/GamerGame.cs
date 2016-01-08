@@ -7,20 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StrategyGame.Dados
+namespace StrategyGame.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TorneioGrupoGamer
+    public partial class GamerGame
     {
         public int ID { get; set; }
-        public Nullable<int> TorneioID { get; set; }
-        public Nullable<int> GrupoID { get; set; }
-        public Nullable<int> Gamer { get; set; }
+        public int GamerID { get; set; }
+        public int PlataformaGameID { get; set; }
+        public System.DateTime Data_GAMGMR { get; set; }
     
-        public virtual Gamer Gamer1 { get; set; }
-        public virtual Grupo Grupo { get; set; }
-        public virtual Torneios Torneios { get; set; }
+        public virtual Gamer Gamer { get; set; }
+        public virtual PlataformaGame PlataformaGame { get; set; }
     }
 }

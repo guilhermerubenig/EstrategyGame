@@ -7,29 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StrategyGame.Dados
+namespace StrategyGame.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PlataformaGame
+    public partial class Plataforma
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PlataformaGame()
+        public Plataforma()
         {
-            this.GamerGame = new HashSet<GamerGame>();
-            this.Grupo = new HashSet<Grupo>();
+            this.PlataformaGame = new HashSet<PlataformaGame>();
         }
     
         public int ID { get; set; }
-        public int PlataformaID { get; set; }
-        public int GameID { get; set; }
+        public string Nome_PLA { get; set; }
+        public string Fabricante_PLA { get; set; }
+        public Nullable<bool> Ativo_PLA { get; set; }
     
-        public virtual Game Game { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GamerGame> GamerGame { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grupo> Grupo { get; set; }
-        public virtual Plataforma Plataforma { get; set; }
+        public virtual ICollection<PlataformaGame> PlataformaGame { get; set; }
     }
 }

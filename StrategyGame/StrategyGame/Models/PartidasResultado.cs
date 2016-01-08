@@ -7,18 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StrategyGame.Dados
+namespace StrategyGame.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class GrupoGamer
+    public partial class PartidasResultado
     {
         public int ID { get; set; }
-        public int GrupoID { get; set; }
-        public int GamerID { get; set; }
+        public int PartidasID { get; set; }
+        public int Gamer { get; set; }
+        public decimal Pontos { get; set; }
+        public string Imagem { get; set; }
+        public string Twitch { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
     
-        public virtual Gamer Gamer { get; set; }
-        public virtual Grupo Grupo { get; set; }
+        public virtual Partidas Partidas { get; set; }
     }
 }
