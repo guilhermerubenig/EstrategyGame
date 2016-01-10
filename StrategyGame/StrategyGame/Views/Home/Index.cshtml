@@ -15,11 +15,6 @@
 <link rel="stylesheet" href="~/Content/creative.css" type="text/css">
 
 
-@using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
-{
-    @Html.AntiForgeryToken();
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -83,11 +78,6 @@
                     <div class="form-group">
                         <label for="senha">Senha</label>
                         <input type="password" class="form-control" id="senha" name="senha">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="Confirmarsenha">Confirmar senha</label>
-                        <input type="password" class="form-control" id="Confirmarsenha" name="Confirmarsenha">
                     </div>
 
                     <input type="button" name="Enviar" class="btn btn-default btn-xl" value="Enviar"/>
@@ -184,4 +174,3 @@
     <script src="~/scripts/creative.js"></script>
     <script src="~/scripts/Home/home.js"></script>
 
-}

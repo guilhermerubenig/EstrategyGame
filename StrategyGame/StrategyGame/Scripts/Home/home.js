@@ -2,16 +2,21 @@
 
     $("input[type=button]").click(function (event) {
 
-        //if (ValidarObrigatorios()) {
-        //    var acao = $(this).attr("value");
-        //    if (acao == "Enviar") {
-        //        if (ValidarSenha()) {
-        //            Gravar($('#apelido').val(), $('#email').val(), $('#senha'));
-        //        }
-        //    }
-        //}
-        Gravar($('#apelido').val(), $('#email').val(), $('#senha').val());
-
+        if ($('#apelido').val() == "") {
+            alert('Apelido campo obrigatório!');
+        } else if ($('#email').val() == "") {
+            alert('E-mail campo obrigatório!');
+        } else if ($('#senha').val() == "") {
+            alert('Senha campo obrigatório!');
+        } else if ($('#Confirmarsenha').val() == "") {
+            alert('Confirmar senha campo obrigatório!');
+        } else {
+            var acao = $(this).attr("value");
+            if (acao == "Enviar") {
+                    Gravar($('#apelido').val(), $('#email').val(), $('#senha'));
+            };
+        }
+            
     });
 
 });
@@ -26,7 +31,7 @@ function ValidarObrigatorios() {
         alert('Senha campo obrigatório!');
     } else if ($('#Confirmarsenha').val() == "") {
         alert('Confirmar senha campo obrigatório!');
-    }
+    } else { true;}
 }
     
 function ValidarSenha() {
@@ -45,8 +50,14 @@ function Gravar(apelido, email, senha ) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (msg) {
-            //$("#Result").text(msg.d);
+
             alert(msg.Retorno);
+
+            if (msg.Retorno != "E-mail cadastrado") {
+                $('#apelido').val('');
+                $('#email').val('');
+                $('#senha').val('');
+            }
         },
         failure: function (response) {
             alert(response.Retorno);
