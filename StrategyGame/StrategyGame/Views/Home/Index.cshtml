@@ -14,6 +14,7 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="~/Content/creative.css" type="text/css">
 
+
 @using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken();
@@ -89,7 +90,7 @@
                         <input type="password" class="form-control" id="Confirmarsenha" name="Confirmarsenha">
                     </div>
 
-                    <input type="button" id="bCadastrar" class="btn btn-default btn-xl" value="Enviar"/>
+                    <input type="button" name="Enviar" class="btn btn-default btn-xl" value="Enviar"/>
                 </div>
             </div>
         </div>
@@ -168,15 +169,19 @@
         </div>
     </section>
 
+     <!-- jQuery -->
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    
 
-    <!-- jQuery -->
-    <script src="~/scripts/jquery.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="~/scripts/bootstrap.min.js"></script>
-        <!-- Plugin JavaScript -->
-        <script src="~/scripts/jquery.easing.min.js"></script>
-        <script src="~/scripts/jquery.fittext.js"></script>
-        <script src="~/scripts/wow.min.js"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="~/scripts/creative.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="~/scripts/jquery.easing.min.js"></script>
+    <script src="~/scripts/jquery.fittext.js"></script>
+    <script src="~/scripts/wow.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/scripts/creative.js"></script>
+    <script src="~/scripts/Home/home.js"></script>
+
 }

@@ -175,6 +175,7 @@
     <None Include="scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="scripts\creative.js" />
     <Content Include="scripts\Gamer\GamerCreate.js" />
+    <Content Include="scripts\Home\home.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
