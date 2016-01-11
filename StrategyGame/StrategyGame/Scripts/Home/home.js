@@ -13,33 +13,13 @@
         } else {
             var acao = $(this).attr("value");
             if (acao == "Enviar") {
-                    Gravar($('#apelido').val(), $('#email').val(), $('#senha'));
+                    Gravar($('#apelido').val(), $('#email').val(), $('#senha').val());
             };
         }
             
     });
 
 });
-
-function ValidarObrigatorios() {
-
-    if ($('#apelido').val() == "") {
-        alert('Apelido campo obrigatório!');
-    } else if ($('#email').val() == "") {
-        alert('E-mail campo obrigatório!');
-    } else if ($('#senha').val() == "") {
-        alert('Senha campo obrigatório!');
-    } else if ($('#Confirmarsenha').val() == "") {
-        alert('Confirmar senha campo obrigatório!');
-    } else { true;}
-}
-    
-function ValidarSenha() {
-
-    if ($('#senha').val() != $('#Confirmarsenha').val()) {
-        alert('Senhas diferentes!');
-    }
-}
 
 function Gravar(apelido, email, senha ) {
     var _data = JSON.stringify({ apelido: apelido, email: email, senha: senha });
