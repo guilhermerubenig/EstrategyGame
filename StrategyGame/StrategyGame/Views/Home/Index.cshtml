@@ -3,16 +3,26 @@
     Layout = null;
 }
 
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<span id="page-top"></span>
 
-<!-- Custom Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="~/Content/font-awesome/css/font-awesome.min.css" type="text/css">
-<!-- Plugin CSS -->
-<link rel="stylesheet" href="~/Content/animate.min.css" type="text/css">
-<!-- Custom CSS -->
-<link rel="stylesheet" href="~/Content/creative.css" type="text/css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+
+    <style>
+        .form-control {
+            height: 54px;
+            font-size: 18px;
+        }
+    </style>
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/font-awesome/css/font-awesome.min.css" type="text/css">
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="~/Content/animate.min.css" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/creative.css" type="text/css">
 
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -63,24 +73,23 @@
     <section class="bg-primary" id="cadastro">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-5 col-lg-offset-3 text-center">
                     <h2 class="section-heading">Cadastro de Gamer</h2>
                     <hr class="light">
 
                     <div class="form-group">
-                        <label for="nome">Apelido</label> 
-                        <input type="text" class="form-control" id="apelido" name="apelido">
+                        @*<label for="nome">Apelido</label>*@
+                        <input type="text" class="form-control" id="apelido" name="apelido" placeholder="Apelido">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control"  id="email" name="email">
+                        @*<label for="email">Email</label>*@
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <label for="senha">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha">
+                        @*<label for="senha">Senha</label>*@
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
                     </div>
-
-                    <input type="button" name="Enviar" class="btn btn-default btn-xl" value="Enviar"/>
+                    <input type="button" name="Enviar" class="btn btn-default btn-xl" value="Enviar" />
                 </div>
             </div>
         </div>
@@ -159,10 +168,10 @@
         </div>
     </section>
 
-     <!-- jQuery -->
+    <!-- jQuery -->
     <script src="~/scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="~/scripts/bootstrap.min.js"></script>
