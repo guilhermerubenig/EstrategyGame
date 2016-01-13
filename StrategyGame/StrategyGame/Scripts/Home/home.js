@@ -8,8 +8,6 @@
             alert('E-mail campo obrigatório!');
         } else if ($('#senha').val() == "") {
             alert('Senha campo obrigatório!');
-        } else if ($('#Confirmarsenha').val() == "") {
-            alert('Confirmar senha campo obrigatório!');
         } else {
             var acao = $(this).attr("value");
             if (acao == "Enviar") {

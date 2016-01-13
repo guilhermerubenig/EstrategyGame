@@ -50,7 +50,7 @@ namespace StrategyGame.Controllers.Home
 
                 //Criar método de envio de e-mail
 
-                retorno = "Gamer cadastrado com sucesso. Você receberá um link de validação por e-mail.";
+                retorno = "Gamer cadastrado com sucesso. Você receberá um link de ativação por e-mail.";
             }
             else
             {
