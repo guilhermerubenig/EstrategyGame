@@ -230,6 +230,8 @@
     <Compile Include="Models\PlataformaGame.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RoleProvider.cs" />
     <Compile Include="Models\StrategyGame.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

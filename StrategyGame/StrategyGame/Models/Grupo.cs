@@ -35,6 +35,7 @@ namespace StrategyGame.Models
         public string Twitch_GRU { get; set; }
         public string Nivel_GRU { get; set; }
         public Nullable<int> Recomendacoes_GRU { get; set; }
+        public int GamerID { get; set; }
     
         public virtual PlataformaGame PlataformaGame { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

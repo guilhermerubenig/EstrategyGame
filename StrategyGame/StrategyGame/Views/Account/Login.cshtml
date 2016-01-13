@@ -28,7 +28,10 @@
                         @Html.EditorFor(model => model.Senha_GMR, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Senha" } }) @Html.ValidationMessageFor(model => model.Senha_GMR, "", new { @class = "text-danger" })
                     </div>
                     <div style="margin-top:10px" class="form-group">
-                        <div class="col-sm-12 controls"> <input type="submit" value="Acessar" class="btn primary btn-lg" /> </div>
+                        <div class="col-sm-12 controls"> 
+                            <input type="submit" value="Acessar" class="btn primary btn-lg" /> 
+                            @Html.ActionLink("Voltar para Home", "Index", "Home")
+                        </div>
                     </div>
                 </div>
             </div>

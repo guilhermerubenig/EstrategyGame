@@ -56,6 +56,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome_GRU" Type="int" Nullable="false" />
+          <Property Name="GamerID" Type="int" Nullable="false" />
           <Property Name="PlataformaGameID" Type="int" Nullable="false" />
           <Property Name="Imagem_GRU" Type="varchar" MaxLength="150" />
           <Property Name="DataCadastro_GRU" Type="smalldatetime" Nullable="false" />
@@ -428,6 +429,7 @@
           <NavigationProperty Name="PlataformaGame" Relationship="Self.FK_Grupo_PlataformaGame" FromRole="Grupo" ToRole="PlataformaGame" />
           <NavigationProperty Name="GrupoGamer" Relationship="Self.FK_GrupoGamer_Grupo" FromRole="Grupo" ToRole="GrupoGamer" />
           <NavigationProperty Name="TorneioGrupoGamer" Relationship="Self.FK_TorneioGrupoGamer_Grupo" FromRole="Grupo" ToRole="TorneioGrupoGamer" />
+          <Property Name="GamerID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Plataforma">
           <Key>
@@ -784,6 +786,7 @@
           <EntitySetMapping Name="Grupo">
             <EntityTypeMapping TypeName="StrategyGameModel.Grupo">
               <MappingFragment StoreEntitySet="Grupo">
+                <ScalarProperty Name="GamerID" ColumnName="GamerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nome_GRU" ColumnName="Nome_GRU" />
                 <ScalarProperty Name="PlataformaGameID" ColumnName="PlataformaGameID" />

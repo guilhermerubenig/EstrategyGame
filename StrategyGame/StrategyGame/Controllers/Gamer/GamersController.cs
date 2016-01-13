@@ -23,6 +23,12 @@ namespace StrategyGame.Controllers
         // GET: Gamers/Details/5
         public ActionResult Details(int? id)
         {
+            if(id == null)
+            {
+                id = Convert.ToInt32(Session["GamerID"]);
+            }
+
+
             if (id == null) 
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
