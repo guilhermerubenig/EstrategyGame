@@ -27,6 +27,13 @@
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         @Html.EditorFor(model => model.Senha_GMR, new { htmlAttributes = new { @class = "form-control input-lg", placeholder = "Senha" } }) @Html.ValidationMessageFor(model => model.Senha_GMR, "", new { @class = "text-danger" })
                     </div>
+                    @if (Model != null)
+                    {
+                            <div style="margin-bottom: 25px" class="input-group">
+                                @Html.EditorFor(model => model.Mensagem, new { htmlAttributes = new { @class = "form-control input-lg", disabled = "disabled" } })
+                            </div>
+                            
+                        }
                     <div style="margin-top:10px" class="form-group">
                         <div class="col-sm-12 controls"> 
                             <input type="submit" value="Acessar" class="btn primary btn-lg" /> 

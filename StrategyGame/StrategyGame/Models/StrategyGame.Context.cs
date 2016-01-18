@@ -30,7 +30,6 @@ namespace StrategyGame.Models
         public virtual DbSet<GamerGame> GamerGame { get; set; }
         public virtual DbSet<Grupo> Grupo { get; set; }
         public virtual DbSet<Plataforma> Plataforma { get; set; }
-        public virtual DbSet<GamerGrupo> GamerGrupo { get; set; }
         public virtual DbSet<GrupoGamer> GrupoGamer { get; set; }
         public virtual DbSet<Partidas> Partidas { get; set; }
         public virtual DbSet<PartidasResultado> PartidasResultado { get; set; }

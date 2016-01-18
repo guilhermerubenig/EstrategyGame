@@ -79,12 +79,6 @@
           <Property Name="Fabricante_PLA" Type="varchar" MaxLength="150" />
           <Property Name="Ativo_PLA" Type="bit" />
         </EntityType>
-        <EntityType Name="GamerGrupo">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
         <EntityType Name="GrupoGamer">
           <Key>
             <PropertyRef Name="ID" />
@@ -92,6 +86,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GrupoID" Type="int" Nullable="false" />
           <Property Name="GamerID" Type="int" Nullable="false" />
+          <Property Name="AceitouConvite" Type="bit" />
         </EntityType>
         <EntityType Name="Partidas">
           <Key>
@@ -146,6 +141,7 @@
           <Property Name="Local" Type="nchar" MaxLength="10" />
           <Property Name="DataCadastro" Type="datetime" />
           <Property Name="GamerID" Type="int" />
+          <Property Name="Pago" Type="bit" />
         </EntityType>
         <Association Name="FK_Grupo_PlataformaGame">
           <End Role="PlataformaGame" Type="Self.PlataformaGame" Multiplicity="1" />
@@ -297,7 +293,6 @@
           <EntitySet Name="GamerGame" EntityType="Self.GamerGame" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plataforma" EntityType="Self.Plataforma" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GamerGrupo" EntityType="Self.GamerGrupo" Schema="strategygame" store:Type="Tables" />
           <EntitySet Name="GrupoGamer" EntityType="Self.GrupoGamer" Schema="strategygame" store:Type="Tables" />
           <EntitySet Name="Partidas" EntityType="Self.Partidas" Schema="strategygame" store:Type="Tables" />
           <EntitySet Name="PartidasResultado" EntityType="Self.PartidasResultado" Schema="strategygame" store:Type="Tables" />
@@ -441,12 +436,6 @@
           <Property Name="Ativo_PLA" Type="Boolean" />
           <NavigationProperty Name="PlataformaGame" Relationship="Self.FK_PlataformaGame_tbl_Plataforma" FromRole="Plataforma" ToRole="PlataformaGame" />
         </EntityType>
-        <EntityType Name="GamerGrupo">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="GrupoGamer">
           <Key>
             <PropertyRef Name="ID" />
@@ -456,6 +445,7 @@
           <Property Name="GamerID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Gamer" Relationship="Self.FK_GrupoGamer_Gamer" FromRole="GrupoGamer" ToRole="Gamer" />
           <NavigationProperty Name="Grupo" Relationship="Self.FK_GrupoGamer_Grupo" FromRole="GrupoGamer" ToRole="Grupo" />
+          <Property Name="AceitouConvite" Type="Boolean" />
         </EntityType>
         <EntityType Name="Partidas">
           <Key>
@@ -522,6 +512,7 @@
           <Property Name="GamerID" Type="Int32" />
           <NavigationProperty Name="Partidas" Relationship="Self.FK_Partidas_Torneios" FromRole="Torneios" ToRole="Partidas" />
           <NavigationProperty Name="TorneioGrupoGamer" Relationship="Self.FK_TorneioGrupoGamer_Torneios1" FromRole="Torneios" ToRole="TorneioGrupoGamer" />
+          <Property Name="Pago" Type="Boolean" />
         </EntityType>
         <Association Name="FK_PlataformaGame_tbl_Game">
           <End Role="Game" Type="Self.Game" Multiplicity="1" />
@@ -673,7 +664,6 @@
           <EntitySet Name="GamerGame" EntityType="Self.GamerGame" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" />
           <EntitySet Name="Plataforma" EntityType="Self.Plataforma" />
-          <EntitySet Name="GamerGrupo" EntityType="Self.GamerGrupo" />
           <EntitySet Name="GrupoGamer" EntityType="Self.GrupoGamer" />
           <EntitySet Name="Partidas" EntityType="Self.Partidas" />
           <EntitySet Name="PartidasResultado" EntityType="Self.PartidasResultado" />
@@ -814,16 +804,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GamerGrupo">
-            <EntityTypeMapping TypeName="StrategyGameModel.GamerGrupo">
-              <MappingFragment StoreEntitySet="GamerGrupo">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GrupoGamer">
             <EntityTypeMapping TypeName="StrategyGameModel.GrupoGamer">
               <MappingFragment StoreEntitySet="GrupoGamer">
+                <ScalarProperty Name="AceitouConvite" ColumnName="AceitouConvite" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="GrupoID" ColumnName="GrupoID" />
                 <ScalarProperty Name="GamerID" ColumnName="GamerID" />
@@ -879,6 +863,7 @@
           <EntitySetMapping Name="Torneios">
             <EntityTypeMapping TypeName="StrategyGameModel.Torneios">
               <MappingFragment StoreEntitySet="Torneios">
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />

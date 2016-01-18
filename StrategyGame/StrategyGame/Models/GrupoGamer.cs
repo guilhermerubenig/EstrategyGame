@@ -17,6 +17,7 @@ namespace StrategyGame.Models
         public int ID { get; set; }
         public int GrupoID { get; set; }
         public int GamerID { get; set; }
+        public Nullable<bool> AceitouConvite { get; set; }
     
         public virtual Gamer Gamer { get; set; }
         public virtual Grupo Grupo { get; set; }

@@ -70,10 +70,15 @@ namespace StrategyGame.Controllers
         // GET: Gamers/Edit/5
         public ActionResult Edit(int? id)
         {
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                id = Convert.ToInt32(Session["GamerID"]);
             }
+            
             Gamer gamer = db.Gamer.Find(id);
             if (gamer == null)
             {

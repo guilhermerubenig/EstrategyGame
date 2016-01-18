@@ -210,9 +210,6 @@
     <Compile Include="Models\GamerGame.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GamerGrupo.cs">
-      <DependentUpon>StrategyGame.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Grupo.cs">
       <DependentUpon>StrategyGame.tt</DependentUpon>
     </Compile>

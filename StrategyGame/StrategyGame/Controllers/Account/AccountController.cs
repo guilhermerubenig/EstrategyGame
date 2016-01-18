@@ -22,16 +22,23 @@ namespace StrategyGame.Controllers.Home
         public ActionResult Login([Bind(Include= "Email_GMR, Senha_GMR")] Gamer ga)
         {
 
-            Gamer gamer = db.Gamer.Where(g => g.Email_GMR == ga.Email_GMR && g.Senha_GMR == ga.Senha_GMR).FirstOrDefault();
+            Gamer gamer = db.Gamer.Where(g => g.Email_GMR == ga.Email_GMR && g.Senha_GMR == ga.Senha_GMR && g.Ativo_GMR == true).FirstOrDefault();
 
-            if(gamer != null)
+            if (gamer != null)
             {
                 Session["GamerID"] = gamer.ID;
 
-                return RedirectToAction("Details", "Gamers");
+                return RedirectToAction("Edit", "Gamers");
+            }
+            else
+            {
+                gamer = new Gamer();
+                gamer.Email_GMR = "";
+                gamer.Senha_GMR = "";
+                gamer.Mensagem = "Gamer não foi localizado ou não está ativo.";
             }
 
-            return View();
+            return View(gamer);
         }
     }
 }

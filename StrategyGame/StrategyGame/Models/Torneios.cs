@@ -28,6 +28,7 @@ namespace StrategyGame.Models
         public string Local { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }
         public Nullable<int> GamerID { get; set; }
+        public Nullable<bool> Pago { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Partidas> Partidas { get; set; }

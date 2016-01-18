@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="StrategyGameModel.GamerGame" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="StrategyGameModel.Grupo" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="StrategyGameModel.Plataforma" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="StrategyGameModel.GamerGrupo" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="StrategyGameModel.GrupoGamer" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="StrategyGameModel.Partidas" Width="1.5" PointX="7.5" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="StrategyGameModel.PartidasResultado" Width="1.5" PointX="9.75" PointY="11.875" IsExpanded="true" />

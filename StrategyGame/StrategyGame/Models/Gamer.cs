@@ -42,6 +42,7 @@ namespace StrategyGame.Models
         public Nullable<bool> Positividade { get; set; }
         public Nullable<bool> Negatividade { get; set; }
         public bool Juiz_GMR { get; set; }
+        public string Mensagem { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GrupoGamer> GrupoGamer { get; set; }
