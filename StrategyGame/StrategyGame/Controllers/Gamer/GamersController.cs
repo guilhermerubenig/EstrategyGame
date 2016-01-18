@@ -92,13 +92,15 @@ namespace StrategyGame.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome_GMR,Sobrenome_GMR,Apelido_GMR,DataCadastro_GMR,DataNascimento_GMR,Ativo_GMR,Email_GMR,Nacionalidade,Sexo_GMR,Youtube_GMR,Twitter_GMR,Twitch_GMR,Facebook_GMR,Fone_GMR,Imagem_GMR,Senha_GMR,Positividade,Negatividade,Juiz_GMR")] Gamer gamer)
+        public ActionResult Edit(Gamer gamer)
         {
             if (ModelState.IsValid)
             {
+                gamer.ID = Convert.ToInt32(Session["GamerID"]);
+                
                 db.Entry(gamer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Edit");
             }
             return View(gamer);
         }
