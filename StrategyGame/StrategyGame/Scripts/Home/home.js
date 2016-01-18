@@ -29,9 +29,13 @@ function Gravar(apelido, email, senha ) {
         dataType: "json",
         success: function (msg) {
 
-            alert(msg.Retorno);
+            if (msg.Retorno == "C") {
+                alert("Gamer cadastrado com sucesso!");
+            } else {
+                alert("E-mail já cadastrado. Digite outro por favor.");
+            }
 
-            if (msg.Retorno != "E-mail cadastrado") {
+            if (msg.Retorno != "Existe") {
                 $('#apelido').val('');
                 $('#email').val('');
                 $('#senha').val('');
