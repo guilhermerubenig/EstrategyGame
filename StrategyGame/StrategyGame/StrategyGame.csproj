@@ -138,6 +138,7 @@
     <Content Include="Content\login_estilo.css" />
     <Content Include="Content\Site.css" />
     <Content Include="img\header.jpg" />
+    <Content Include="img\iconJoystick.png" />
     <Content Include="img\logoStrategyGame.png" />
     <Content Include="Models\StrategyGame.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
